@@ -1,0 +1,60 @@
+@primary: #3f51b5;
+
+#root-wrapper{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "nav main"
+    "footer footer"; 
+
+    grid-template-rows: 6rem auto 4rem;
+    grid-template-columns: 20rem auto ;
+    
+    #root-nav, 
+    #root-content, 
+    #root-header, 
+    #root-footer{
+        height: 100%;
+        width: 100%;
+        grid-area: footer;
+    }
+    >#root-nav{
+        grid-area: nav;
+    }
+
+    >#root-content{
+        grid-area: main;
+    }
+
+    >#root-header{
+        grid-area: header;
+        height: 6rem;
+        background-color: @primary;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+
+    }
+
+    >#root-footer{
+        grid-area: footer;
+        height: 4rem;
+        background-color: @primary;
+        width: 100% ;
+    }
+
+    height: 100%;
+}
+
+#root-title{
+    color: white;
+    text-transform: uppercase; //Jup this is inportant for TextReaders
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 1rem;
+    font-size: xx-large;
+}
