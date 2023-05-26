@@ -1,5 +1,5 @@
 <div>
-    <mat-drawer mode="side" #drawer id="sidenav-wrapper">
+    <mat-drawer [opened]="true" mode="side" #drawer id="sidenav-wrapper">
         <div id="sidenav-header">
             <h1 id="sidenav-title">Navigator</h1>
             <button (click)="drawer.toggle()" id="sidenav-minimizer" mat-icon-button color="secondary">
@@ -7,6 +7,10 @@
             </button>
         </div>
         <div id="sidenav-links">
+            <app-sidenav-element title="Test"></app-sidenav-element>
+            <app-sidenav-element title="Test 2"></app-sidenav-element>
+            <app-sidenav-element title="Test 3"></app-sidenav-element>
+            <app-sidenav-element title="Test 4"></app-sidenav-element>
 
         </div>
     </mat-drawer>

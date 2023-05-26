@@ -15,13 +15,15 @@ import { SidenavComponent } from './component/sidenav/sidenav.component';
 
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatIconModule} from '@angular/material/icon'; 
-import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { SidenavElementComponent } from './component/sidenav/sidenav-element/sidenav-element.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     SidenavComponent,
+    SidenavElementComponent,
   ],
   imports: [
     HttpClientModule,
