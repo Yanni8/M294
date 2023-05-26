@@ -2,14 +2,14 @@
   <header id="root-header">
     <h1 id="root-title">Answera</h1>
   </header>
-  <nav id="root-nav">
-
-  </nav>
   <main id="root-content">
-    <router-outlet></router-outlet>
+    <mat-drawer-container id="drawer-wrapper">
+      <app-sidenav></app-sidenav>
+      <router-outlet></router-outlet>
+    </mat-drawer-container>
   </main>
-  
+
   <footer id="root-footer">
-  
+
   </footer>
 </div>

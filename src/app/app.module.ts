@@ -11,11 +11,17 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { HttpClientModule } from "@angular/common/http";
 import { userReducer } from './stage/user/userm.reducer';
 import { UserEffect } from './stage/user/user.effect';
+import { SidenavComponent } from './component/sidenav/sidenav.component';
+
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import {MatSidenavModule} from '@angular/material/sidenav'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
+    SidenavComponent,
   ],
   imports: [
     HttpClientModule,
@@ -24,7 +30,10 @@ import { UserEffect } from './stage/user/user.effect';
     BrowserAnimationsModule,
     StoreModule.forRoot({"users": userReducer}, {}),
     EffectsModule.forRoot([UserEffect]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
