@@ -7,7 +7,7 @@
             </button>
         </div>
         <div id="sidenav-links">
-            <app-sidenav-element title="Test"></app-sidenav-element>
+            <app-sidenav-element (changeRef)="drawer.toggle()" title="User Overview" icon="person" [href]="['user']"></app-sidenav-element>
             <app-sidenav-element title="Test 2"></app-sidenav-element>
             <app-sidenav-element title="Test 3"></app-sidenav-element>
             <app-sidenav-element title="Test 4"></app-sidenav-element>

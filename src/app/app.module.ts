@@ -22,7 +22,7 @@ import { AppAuthGuard } from './guard/app.auth.guard';
 import { LoginLogoutComponent } from './component/login-logout/login-logout.component';
 import { AppAuthService } from './service/app.auth.service';
 import { CustomAuthStorage } from './autoStorage';
-
+import {MatTableModule} from '@angular/material/table'; 
 
 export let AppInjector: Injector;
 
@@ -69,7 +69,8 @@ export function storageFactory(): OAuthStorage {
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule
   ],
   providers: [
     {

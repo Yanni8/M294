@@ -13,6 +13,7 @@ import { selectAllUsers } from 'src/app/stage/user/user.selector';
 export class UserListComponent implements OnInit{
 
   public users: Array<User> = [];
+  public displayedColumns: String[] = ['username', 'lastname', 'firstname', 'action'];
 
   constructor(private store: Store){}
 

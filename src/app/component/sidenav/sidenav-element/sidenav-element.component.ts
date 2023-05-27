@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav-element',
@@ -12,5 +12,6 @@ export class SidenavElementComponent {
   @Input("href") public href: Array<String> = ["/"];
 
 
+  @Output("changeRef") public changeRefEvent = new EventEmitter<void>(); 
 
 }

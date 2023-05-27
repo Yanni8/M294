@@ -1,4 +1,4 @@
-<a class="sidenav-element-wrapper">
+<a  (click)="changeRefEvent.emit()" [routerLink]="href" class="sidenav-element-wrapper">
     <h2 class="sidenav-element-title">{{title}}</h2>
     <mat-icon class="sidenav-element-icon">{{icon}}</mat-icon>
 </a>
