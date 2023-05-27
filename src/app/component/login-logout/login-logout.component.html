@@ -1,8 +1,8 @@
 <div id="login-logout-component">
-    <button (click)="login()" id="login-button" *ngIf="!isLogedIn" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-        <mat-icon id="login-icon" class="white-icon">login</mat-icon>
+    <button (click)="login()" id="login-button" *ngIf="!isLogedIn" mat-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon id="login-icon" class="white-icon">login</mat-icon> <p class="button-text">Login</p>
     </button>
-    <button (click)="logout()"  id="logout-button" *ngIf="isLogedIn" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-        <mat-icon id="logout-icon" class="white-icon">logout</mat-icon>
+    <button (click)="logout()"  id="logout-button" *ngIf="isLogedIn" mat-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon id="logout-icon" class="white-icon">logout</mat-icon> <p class="button-text">Logout</p>
     </button>
 </div>
