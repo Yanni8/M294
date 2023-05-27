@@ -17,6 +17,30 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidenavElementComponent } from './component/sidenav/sidenav-element/sidenav-element.component'; 
+import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { AppAuthGuard } from './guard/app.auth.guard';
+import { LoginLogoutComponent } from './component/login-logout/login-logout.component';
+import { AppAuthService } from './service/app.auth.service';
+
+
+export const authConfig: AuthConfig = {
+  issuer: 'https://sso.bbzbl-it.dev/realms/ILV',
+  requireHttps: false,
+  redirectUri: window.location.origin,
+  postLogoutRedirectUri: window.location.origin,
+  clientId: 'demoapp',
+  scope: 'openid profile roles offline_access',
+  responseType: 'code',
+  showDebugInformation: true,
+  requestAccessToken: true,
+  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  silentRefreshTimeout: 500,
+  clearHashAfterLogin: true,
+};
+
+export function storageFactory(): OAuthStorage {
+  return sessionStorage;
+}
 
 @NgModule({
   declarations: [
@@ -24,8 +48,14 @@ import { SidenavElementComponent } from './component/sidenav/sidenav-element/sid
     UserListComponent,
     SidenavComponent,
     SidenavElementComponent,
+    LoginLogoutComponent,
   ],
   imports: [
+    OAuthModule.forRoot({
+      resourceServer: {
+        sendAccessToken: true
+      }
+    }),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -37,7 +67,21 @@ import { SidenavElementComponent } from './component/sidenav/sidenav-element/sid
     MatIconModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthConfig,
+      useValue: authConfig
+    },
+    {
+      provide: OAuthStorage,
+      useFactory: storageFactory
+    },
+    AppAuthGuard
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(authService: AppAuthService) {
+    authService.initAuth().finally()
+  }
+}

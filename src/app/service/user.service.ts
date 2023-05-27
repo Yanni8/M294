@@ -11,9 +11,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public getUsers(): Observable<Array<User>>{
-    return of([
-      {firstName: "Max", lastName: "Mustermann", id: -1, username: "Testing"}
-    ] as Array<User>)
+    return this.http.get<Array<User>>("/api/v1/user");
   }
 
 
