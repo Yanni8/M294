@@ -23,6 +23,7 @@ import { LoginLogoutComponent } from './component/login-logout/login-logout.comp
 import { AppAuthService } from './service/app.auth.service';
 import { CustomAuthStorage } from './autoStorage';
 import {MatTableModule} from '@angular/material/table'; 
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 
 export let AppInjector: Injector;
 
@@ -70,7 +71,8 @@ export function storageFactory(): OAuthStorage {
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     {
