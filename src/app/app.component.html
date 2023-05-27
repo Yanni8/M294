@@ -6,7 +6,12 @@
   <main id="root-content">
     <mat-drawer-container id="drawer-wrapper">
       <app-sidenav></app-sidenav>
-      <router-outlet></router-outlet>
+      <div id="main-content">
+        <div id="hello-banner" *ngIf="currentUser">
+          <h1> Welcome Back <b>{{currentUser.username}}</b></h1>
+        </div>
+        <router-outlet></router-outlet>  
+      </div>
     </mat-drawer-container>
   </main>
 

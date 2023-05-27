@@ -21,7 +21,7 @@ export class UserEffect {
     whoami$ = createEffect(() => this.actions$.pipe(
         ofType(whoami),
         mergeMap(() => this.userService.whoami().pipe(
-            map((user) => whoamiSuccess(user)),
+            map((user) => whoamiSuccess({user: user})),
             catchError(error => of(addNotification({ desc: "You need to sing up in to use this Application", isError: true })))
         )
         )

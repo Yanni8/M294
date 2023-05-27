@@ -9,7 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { HttpClientModule } from "@angular/common/http";
-import { userReducer } from './stage/user/userm.reducer';
+import { userReducer, whoamiReducer } from './stage/user/user.reducer';
 import { UserEffect } from './stage/user/user.effect';
 import { SidenavComponent } from './component/sidenav/sidenav.component';
 
@@ -64,7 +64,7 @@ export function storageFactory(): OAuthStorage {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({"users": userReducer}, {}),
+    StoreModule.forRoot({"users": userReducer, "currentUser" : whoamiReducer}, {}),
     EffectsModule.forRoot([UserEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,

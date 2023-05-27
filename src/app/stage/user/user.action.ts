@@ -16,5 +16,5 @@ export const whoami = createAction(
 
 export const whoamiSuccess = createAction(
     '[Collection] adding User that sucessfull got returned from whoami',
-    props<User>()
+    props<{user: User}>()
 );
