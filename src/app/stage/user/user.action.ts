@@ -10,6 +10,18 @@ export const loadAllUsersSuccess = createAction(
     props<{users: Array<User>}>()
 )
 
+
+
+export const deleteUser = createAction(
+    '[API] deletingUser',
+    props<{id : number}>()     
+)
+
+export const deleteUserSucess = createAction(
+    '[Collection] deletingUser',
+    props<{id : number}>()     
+)
+
 export const whoami = createAction(
     '[API] Requesting User model of logged in User'
 )
