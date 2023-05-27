@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { whoami } from './stage/user/user.action';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppComponent implements OnInit{
 
-  constructor(private route: ActivatedRoute){}
+  private accessToken: String = "";
+
+  constructor(private store: Store){}
 
   ngOnInit(): void {
-    
+    this.store.dispatch(whoami());
   }
 
 }

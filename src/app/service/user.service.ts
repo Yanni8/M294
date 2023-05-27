@@ -14,5 +14,9 @@ export class UserService {
     return this.http.get<Array<User>>("/api/v1/user");
   }
 
+  public whoami(): Observable<User>{
+    return this.http.get<User>("/api/v1/user/whoami");
+  }
+
 
 }

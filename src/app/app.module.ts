@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule, isDevMode, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +21,10 @@ import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { AppAuthGuard } from './guard/app.auth.guard';
 import { LoginLogoutComponent } from './component/login-logout/login-logout.component';
 import { AppAuthService } from './service/app.auth.service';
+import { CustomAuthStorage } from './autoStorage';
 
+
+export let AppInjector: Injector;
 
 export const authConfig: AuthConfig = {
   issuer: 'https://sso.bbzbl-it.dev/realms/ILV',
@@ -38,8 +41,9 @@ export const authConfig: AuthConfig = {
   clearHashAfterLogin: true,
 };
 
+
 export function storageFactory(): OAuthStorage {
-  return sessionStorage;
+  return new CustomAuthStorage();
 }
 
 @NgModule({
@@ -81,7 +85,8 @@ export function storageFactory(): OAuthStorage {
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-  constructor(authService: AppAuthService) {
+  constructor(authService: AppAuthService, private injector: Injector) {
     authService.initAuth().finally()
+    AppInjector = injector;
   }
 }

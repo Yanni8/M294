@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import { Store } from '@ngrx/store';
 import {AuthConfig, OAuthErrorEvent, OAuthService} from 'angular-oauth2-oidc';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 
@@ -7,6 +8,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
   providedIn: 'root'
 })
 export class AppAuthService {
+  
   private jwtHelper: JwtHelperService = new JwtHelperService();
   private usernameSubject: BehaviorSubject<string> = new BehaviorSubject('');
   public readonly usernameObservable: Observable<string> = this.usernameSubject.asObservable();
@@ -17,7 +19,8 @@ export class AppAuthService {
 
   constructor(
     private oauthService: OAuthService,
-    private authConfig: AuthConfig
+    private authConfig: AuthConfig,
+    private store: Store
   ) {
     this.handleEvents(null);
   }
