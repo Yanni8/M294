@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
 import { UserService } from "src/app/service/user.service";
 import { addNotification } from "../notification/notification.action";
-import { createUser, deleteUser, deleteUserSucess, loadAllUsers, loadAllUsersSuccess, loadUserById, loadUserSuccess, updateUser, whoami, whoamiSuccess } from "./user.action";
+import { createUser, deleteUser, deleteUserSucess, loadAllUsers, loadAllUsersSuccess, loadUserById, loadUserSuccess, updateUser, updateUserSuccess, whoami, whoamiSuccess } from "./user.action";
 
 @Injectable()
 export class UserEffect {
@@ -48,7 +48,7 @@ export class UserEffect {
     updateUser$ = createEffect(() => this.actions$.pipe(
         ofType(updateUser),
         mergeMap(({ user }) => this.userService.updateUser(user).pipe(
-            map((user) => loadUserSuccess({ user: user })),
+            map((user) => updateUserSuccess({ user: user })),
             catchError(error => of(addNotification({ desc: "Someting went wrong updating a Users. Try it later again", isError: true })))
         )
         )
@@ -59,7 +59,7 @@ export class UserEffect {
         ofType(createUser),
         mergeMap(({ user }) => this.userService.saveUser(user).pipe(
             map((user) => loadUserSuccess({ user: user })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong updating a Users. Try it later again", isError: true })))
+            catchError(error => of(addNotification({ desc: "Someting went wrong creating a new Users. Try it later again", isError: true })))
         )
         )
     ))

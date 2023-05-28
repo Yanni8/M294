@@ -48,6 +48,12 @@ export const updateUser = createAction(
     props<{user: User}>()
 )
 
+
+export const updateUserSuccess = createAction(
+    '[Collection] updating User in store',
+    props<{user: User}>()
+)
+
 export const createUser = createAction(
     '[API] creating new user',
     props<{user: User}>()
