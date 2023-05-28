@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
 import { UserService } from "src/app/service/user.service";
 import { addNotification } from "../notification/notification.action";
-import { deleteUser, deleteUserSucess, loadAllUsers, loadAllUsersSuccess, whoami, whoamiSuccess } from "./user.action";
+import { deleteUser, deleteUserSucess, loadAllUsers, loadAllUsersSuccess, loadUserById, loadUserByIdSuccess, whoami, whoamiSuccess } from "./user.action";
 
 @Injectable()
 export class UserEffect {
@@ -32,6 +32,15 @@ export class UserEffect {
         mergeMap(({id}) => this.userService.deleteUser(id).pipe(
             map(() => deleteUserSucess({id: id})),
             catchError(error => of(addNotification({ desc: "Something went wrong why trying to delete a User", isError: true })))
+        )
+        )
+    ))
+
+    getUsersById$ = createEffect(() => this.actions$.pipe(
+        ofType(loadUserById),
+        mergeMap(({id}) => this.userService.getUserById(id).pipe(
+            map((user) => loadUserByIdSuccess({user: user})),
+            catchError(error => of(addNotification({ desc: "Someting went wrong requesting a Users. Try it later again", isError: true })))
         )
         )
     ))

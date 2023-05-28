@@ -12,6 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { userReducer, whoamiReducer } from './stage/user/user.reducer';
 import { UserEffect } from './stage/user/user.effect';
 import { SidenavComponent } from './component/sidenav/sidenav.component';
+import {MatInputModule} from '@angular/material/input';
 
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatIconModule} from '@angular/material/icon'; 
@@ -23,7 +24,10 @@ import { LoginLogoutComponent } from './component/login-logout/login-logout.comp
 import { AppAuthService } from './service/app.auth.service';
 import { CustomAuthStorage } from './autoStorage';
 import {MatTableModule} from '@angular/material/table'; 
-import {MatPaginatorModule} from '@angular/material/paginator'; 
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { UserEditComponent } from './pages/user-edit/user-edit.component'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 
 export let AppInjector: Injector;
 
@@ -54,6 +58,7 @@ export function storageFactory(): OAuthStorage {
     SidenavComponent,
     SidenavElementComponent,
     LoginLogoutComponent,
+    UserEditComponent,
   ],
   imports: [
     OAuthModule.forRoot({
@@ -72,7 +77,11 @@ export function storageFactory(): OAuthStorage {
     MatIconModule,
     MatSidenavModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
     {

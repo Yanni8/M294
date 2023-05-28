@@ -21,4 +21,8 @@ export class UserService {
   public deleteUser(id: number): Observable<void>{
     return this.http.delete<void>(`/api/v1/user/${id}`);
   }
+
+  public getUserById(id: number): Observable<User>{
+    return this.http.get<User>(`/api/v1/user/${id}/administrator`)
+  }
 }

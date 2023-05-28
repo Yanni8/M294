@@ -30,3 +30,14 @@ export const whoamiSuccess = createAction(
     '[Collection] adding User that sucessfull got returned from whoami',
     props<{user: User}>()
 );
+
+export const loadUserById = createAction (
+    '[API] loadig User By Id',
+    props<{id: number}>()
+)
+
+
+export const loadUserByIdSuccess = createAction (
+    '[Collection] storing loadet use',
+    props<{user: User}>()
+)

@@ -42,10 +42,6 @@ export class UserListComponent implements OnInit{
     this.updatePreviewUser()
   }
 
-  editUser(id: number){
-
-  }
-
   deleteUser(id: number){
     this.store.dispatch(deleteUser({id: id}));
   }
