@@ -28,6 +28,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { UserEditComponent } from './pages/user-edit/user-edit.component'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { GroupListComponent } from './pages/group-list/group-list.component';
+import { GroupEffect } from './stage/group/group.effect';
+import { groupReducer } from './stage/group/group.reducer';
 
 export let AppInjector: Injector;
 
@@ -59,6 +62,7 @@ export function storageFactory(): OAuthStorage {
     SidenavElementComponent,
     LoginLogoutComponent,
     UserEditComponent,
+    GroupListComponent,
   ],
   imports: [
     OAuthModule.forRoot({
@@ -70,8 +74,8 @@ export function storageFactory(): OAuthStorage {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({"users": userReducer, "currentUser" : whoamiReducer}, {}),
-    EffectsModule.forRoot([UserEffect]),
+    StoreModule.forRoot({"users": userReducer, "currentUser" : whoamiReducer, "groups": groupReducer}, {}),
+    EffectsModule.forRoot([UserEffect, GroupEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,
     MatIconModule,
