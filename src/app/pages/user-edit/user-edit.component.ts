@@ -1,6 +1,6 @@
 import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { User } from 'src/app/model/user.model';
@@ -22,16 +22,22 @@ export class UserEditComponent implements OnInit{
     lastName: new FormControl("")
   });
 
-  constructor(private store: Store, private route: ActivatedRoute, private router: Router){}
+  constructor(private store: Store, private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder){}
+
+  updateFormbuilder(user: User | null){
+    if(!user){
+      return;
+    }
+    this.userForm = this.formBuilder.group(user);
+  }
 
   ngOnInit(): void {
 
     const userId = this.route.snapshot.paramMap.get("id");
 
-
     if(userId !== null){
       
-      this.store.select(selectUserById({id: +userId})).subscribe(user =>  this.user = user || null);
+      this.store.select(selectUserById({id: +userId})).subscribe(user =>  {this.user = user || null; this.updateFormbuilder(this.user)});
 
       if(!this.user){
         this.store.dispatch(loadUserById({id: +userId}));
