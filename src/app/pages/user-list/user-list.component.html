@@ -1,4 +1,9 @@
 <div class="mat-elevation-z8">
+    <div id="add-user-button-wrapper">
+        <button id="add-user-button" mat-icon-button [routerLink]="['edit']" color="primary">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
     <table mat-table [dataSource]="previewUsers">
 
         <ng-container matColumnDef="username">
