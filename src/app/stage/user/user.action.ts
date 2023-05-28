@@ -37,7 +37,18 @@ export const loadUserById = createAction (
 )
 
 
-export const loadUserByIdSuccess = createAction (
+export const loadUserSuccess = createAction (
     '[Collection] storing loadet use',
+    props<{user: User}>()
+)
+
+
+export const updateUser = createAction(
+    '[API] updating User',
+    props<{user: User}>()
+)
+
+export const createUser = createAction(
+    '[API] creating new user',
     props<{user: User}>()
 )

@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { User } from 'src/app/model/user.model';
-import { loadUserById } from 'src/app/stage/user/user.action';
+import { createUser, loadUserById, updateUser } from 'src/app/stage/user/user.action';
 import { selectUserById } from 'src/app/stage/user/user.selector';
 
 @Component({
@@ -47,6 +47,17 @@ export class UserEditComponent implements OnInit{
 
   goBack(){ 
     this.router.navigate(['user'])
+  }
+
+
+  submit(){
+    if(this.user?.id){
+      this.store.dispatch(updateUser({user: this.userForm.getRawValue() as User}));
+    } else{
+      this.store.dispatch(createUser({user: this.userForm.getRawValue() as User}));      
+    }
+
+    this.router.navigate(["user"])
   }
 
 }

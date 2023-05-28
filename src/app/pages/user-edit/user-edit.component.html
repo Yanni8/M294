@@ -1,6 +1,6 @@
 <div id="user-edit-wrapper">
     <h1>Editing User {{user?.firstName}}</h1>
-    <form id="user-edit-form" [formGroup]="userForm">
+    <form (submit)="submit()" id="user-edit-form" [formGroup]="userForm">
         <mat-form-field class="user-edit-form-field">
             <mat-label>Username</mat-label>
             <input appAutofocus formControlName="username" matInput maxlength="20" required>
