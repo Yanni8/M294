@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { AddUserPopupComponent } from 'src/app/component/group/add-user-popup/add-user-popup.component';
 import { Group } from 'src/app/model/group.model';
 import { loadAllGroups } from 'src/app/stage/group/group.action';
 import { selectAllGroups } from 'src/app/stage/group/group.selector';
@@ -17,7 +19,7 @@ export class GroupListComponent implements OnInit {
   public pageSize = 10;
   public previewGroups: Array<Group> = [];
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.store.dispatch(loadAllGroups());
@@ -44,10 +46,14 @@ export class GroupListComponent implements OnInit {
   }
 
   addUser(){
+    let dialogRef = this.dialog.open(AddUserPopupComponent, {
+      height: '20rem',
+      width: '30rem',
+    });
 
   }
 
   removeUser(){
-    
+
   }
 }

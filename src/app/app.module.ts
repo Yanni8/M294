@@ -31,6 +31,9 @@ import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/fo
 import { GroupListComponent } from './pages/group-list/group-list.component';
 import { GroupEffect } from './stage/group/group.effect';
 import { groupReducer } from './stage/group/group.reducer';
+import { AddUserPopupComponent } from './component/group/add-user-popup/add-user-popup.component';
+import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 
 export let AppInjector: Injector;
 
@@ -63,6 +66,7 @@ export function storageFactory(): OAuthStorage {
     LoginLogoutComponent,
     UserEditComponent,
     GroupListComponent,
+    AddUserPopupComponent,
   ],
   imports: [
     OAuthModule.forRoot({
@@ -86,6 +90,8 @@ export function storageFactory(): OAuthStorage {
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    MatAutocompleteModule,
   ],
   providers: [
     {

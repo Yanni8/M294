@@ -1,0 +1,21 @@
+<div id="adduser-popup-wrapper">
+    <h1>Search for User to add</h1>
+    <form id="adduser-form">
+        <mat-form-field>
+            <mat-label>User</mat-label>
+            <input #selectedUser (input)="filter(selectedUser.value)" type="text"
+                   placeholder="Select User"
+                   matInput
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option (onSelectionChange)="loadUser(user)" *ngFor="let user of previewUsers" [value]="user.username">
+                    {{user.username}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <div id="adduser-action">
+            <button mat-stroked-button [mat-dialog-close]="" color="warn">Close</button>
+            <button mat-stroked-button  [disabled]="!choseUser" [mat-dialog-close]="selectedUser" color="primary">Add User</button>
+        </div>
+    </form>
+</div>
