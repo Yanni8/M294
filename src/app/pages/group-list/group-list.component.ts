@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AddUserPopupComponent } from 'src/app/component/group/add-user-popup/add-user-popup.component';
 import { Group } from 'src/app/model/group.model';
-import { loadAllGroups } from 'src/app/stage/group/group.action';
+import { User } from 'src/app/model/user.model';
+import { inviteUserToGroup, loadAllGroups, removeUser } from 'src/app/stage/group/group.action';
 import { selectAllGroups } from 'src/app/stage/group/group.selector';
 
 @Component({
@@ -42,18 +43,20 @@ export class GroupListComponent implements OnInit {
   }
 
   deleteGroup(id: number){
-
+    
   }
 
-  addUser(){
+  addUser(groupId: number){
     let dialogRef = this.dialog.open(AddUserPopupComponent, {
       height: '20rem',
       width: '30rem',
     });
 
+    dialogRef.afterClosed().subscribe(data => {if(data){this.store.dispatch(inviteUserToGroup({user: data, groupId: groupId}))}});
+
   }
 
-  removeUser(){
-
+  removeUser(user:User, id: number){
+    this.store.dispatch(removeUser({groupId: id, user: user}))
   }
 }

@@ -13,7 +13,7 @@
                 <div class="username-wrapper">
                     <div class="username-badge" *ngFor="let user of element.users">
                         <p class="username-badge-text">{{user.username}}</p>
-                        <mat-icon (click)="removeUser()" class="username-badge-delete">clear</mat-icon>
+                        <mat-icon (click)="removeUser(user, element.id)" class="username-badge-delete">clear</mat-icon>
                     </div>
                 </div>
             </td>
@@ -27,7 +27,7 @@
                     <button [routerLink]="['edit', element.id]" mat-icon-button>
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button (click)="addUser()" mat-icon-button>
+                    <button (click)="addUser(element.id)" mat-icon-button>
                         <mat-icon>person_add</mat-icon>
                     </button>
                     <button (click)="deleteGroup(element.id)" mat-icon-button>
