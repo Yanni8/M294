@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: "user/edit/:id", pathMatch: "full", component: UserEditComponent},
   {path: "user/edit", pathMatch: "full", component: UserEditComponent},
   {path: "group", pathMatch: "full", component: GroupListComponent },
-  {path: "group/edit", pathMatch: "full", component: GroupEditComponent}
+  {path: "group/edit", pathMatch: "full", component: GroupEditComponent},
+  {path: "group/edit/:id", pathMatch: "full", component: GroupEditComponent}
 ];
 
 @NgModule({

@@ -41,3 +41,13 @@ export const createGroup = createAction(
     '[API] creating new Group',
     props<{group: Group}>()
 )
+
+export const loadGroupById = createAction(
+    '[API] loading group by id',
+    props<{id: number}>()
+)
+
+export const updateGroup = createAction(
+    '[API] unpdating a group',
+    props<{group: Group}>()
+)

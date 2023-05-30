@@ -2,6 +2,6 @@ import { User } from "./user.model";
 
 export interface Group{
     id?: number;
-    groupName: String;
+    groupName: string;
     users: Array<User>;
 }

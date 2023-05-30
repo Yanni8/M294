@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { USER_PROVIDED_EFFECTS } from '@ngrx/effects';
 import { Observable } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Group } from '../model/group.model';
 import { User } from '../model/user.model';
 
@@ -30,4 +32,12 @@ export class GroupService {
   public createGroup(group: Group): Observable<Group>{
     return this.http.post<Group>("/api/v1/group/", group);
   }
+  public getGroupById(id: number): Observable<Group>{
+    return this.http.get<Group>(`/api/v1/group/${id}/administrator`)
+  }
+
+  public updateGroup(group: Group): Observable<Group>{
+    return this.http.put<Group>(`/api/v1/group/${group.id}`, group)
+  }
+
 }

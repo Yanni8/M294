@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
 import { GroupService } from "src/app/service/group.service";
 import { addNotification } from "../notification/notification.action";
-import { createGroup, deleteGroup, deleteGroupSuccess, inviteUserToGroup, loadAllGroups, loadAllGroupsSuccess, loadGroupSuccess, removeUser } from "./group.action";
+import { createGroup, deleteGroup, deleteGroupSuccess, inviteUserToGroup, loadAllGroups, loadAllGroupsSuccess, loadGroupById, loadGroupSuccess, removeUser, updateGroup } from "./group.action";
 
 @Injectable()
 export class GroupEffect {
@@ -50,6 +50,24 @@ export class GroupEffect {
         mergeMap(({group}) => this.groupService.createGroup(group).pipe(
             map((group) => loadGroupSuccess({ group: group })),
             catchError(error => of(addNotification({ desc: "Someting went wrong creating a new group. Try it later again", isError: true })))
+        )
+        )
+    ))
+
+    loadGroup$ = createEffect(() => this.actions$.pipe(
+        ofType(loadGroupById),
+        mergeMap(({id}) => this.groupService.getGroupById(id).pipe(
+            map((group) => loadGroupSuccess({ group: group })),
+            catchError(error => of(addNotification({ desc: "Someting went wrong requesting a group. Try it later again", isError: true })))
+        )
+        )
+    ))
+
+    updateGroup$ = createEffect(() => this.actions$.pipe(
+        ofType(updateGroup),
+        mergeMap(({group}) => this.groupService.updateGroup(group).pipe(
+            map((group) => loadGroupSuccess({ group: group })),
+            catchError(error => of(addNotification({ desc: "Someting went wrong updating a group. Try it later again", isError: true })))
         )
         )
     ))
