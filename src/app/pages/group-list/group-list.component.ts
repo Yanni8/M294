@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { AddUserPopupComponent } from 'src/app/component/group/add-user-popup/add-user-popup.component';
 import { Group } from 'src/app/model/group.model';
 import { User } from 'src/app/model/user.model';
-import { inviteUserToGroup, loadAllGroups, removeUser } from 'src/app/stage/group/group.action';
+import { deleteGroup, inviteUserToGroup, loadAllGroups, removeUser } from 'src/app/stage/group/group.action';
 import { selectAllGroups } from 'src/app/stage/group/group.selector';
 
 @Component({
@@ -43,7 +43,7 @@ export class GroupListComponent implements OnInit {
   }
 
   deleteGroup(id: number){
-    
+    this.store.dispatch(deleteGroup({groupId: id}))
   }
 
   addUser(groupId: number){

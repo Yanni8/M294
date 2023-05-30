@@ -23,6 +23,16 @@ export const loadGroupSuccess = createAction(
 )
 
 export const removeUser = createAction(
-    '[API] removing User',
+    '[API] removing User from Group',
     props<{user: User, groupId: number}>()
+)
+
+export const deleteGroup = createAction(
+    '[API] removing Group',
+    props<{groupId: number}>()
+)
+
+export const deleteGroupSuccess = createAction(
+    '[Collection] removing Group that got deleted',
+    props<{groupId: number}>()
 )

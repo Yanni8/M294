@@ -22,4 +22,8 @@ export class GroupService {
   public removeUser(user: User, groupId: number): Observable<Group>{
     return this.http.put<Group>(`/api/v1/group/${groupId}/leave?userId=${user.id}`,{});
   }
+
+  public deleteGroup(id: number): Observable<void>{
+    return this.http.delete<void>(`/api/v1/group/${id}`);
+  }
 }
