@@ -36,3 +36,8 @@ export const deleteGroupSuccess = createAction(
     '[Collection] removing Group that got deleted',
     props<{groupId: number}>()
 )
+
+export const createGroup = createAction(
+    '[API] creating new Group',
+    props<{group: Group}>()
+)

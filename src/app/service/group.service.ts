@@ -26,4 +26,8 @@ export class GroupService {
   public deleteGroup(id: number): Observable<void>{
     return this.http.delete<void>(`/api/v1/group/${id}`);
   }
+
+  public createGroup(group: Group): Observable<Group>{
+    return this.http.post<Group>("/api/v1/group/", group);
+  }
 }

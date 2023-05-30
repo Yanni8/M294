@@ -1,6 +1,10 @@
 <div class="mat-elevation-z8">
+    <div id="add-group-button-wrapper">
+        <button id="add-group-button" mat-icon-button [routerLink]="['edit']" color="primary">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
     <table mat-table [dataSource]="previewGroups">
-
         <ng-container matColumnDef="groupName">
             <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element"> {{element.groupName}} </td>

@@ -33,7 +33,8 @@ import { GroupEffect } from './stage/group/group.effect';
 import { groupReducer } from './stage/group/group.reducer';
 import { AddUserPopupComponent } from './component/group/add-user-popup/add-user-popup.component';
 import {MatDialogModule} from '@angular/material/dialog'; 
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { GroupEditComponent } from './pages/group-edit/group-edit.component'; 
 
 export let AppInjector: Injector;
 
@@ -67,6 +68,7 @@ export function storageFactory(): OAuthStorage {
     UserEditComponent,
     GroupListComponent,
     AddUserPopupComponent,
+    GroupEditComponent,
   ],
   imports: [
     OAuthModule.forRoot({

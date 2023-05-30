@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
 import { GroupService } from "src/app/service/group.service";
 import { addNotification } from "../notification/notification.action";
-import { deleteGroup, deleteGroupSuccess, inviteUserToGroup, loadAllGroups, loadAllGroupsSuccess, loadGroupSuccess, removeUser } from "./group.action";
+import { createGroup, deleteGroup, deleteGroupSuccess, inviteUserToGroup, loadAllGroups, loadAllGroupsSuccess, loadGroupSuccess, removeUser } from "./group.action";
 
 @Injectable()
 export class GroupEffect {
@@ -41,6 +41,15 @@ export class GroupEffect {
         mergeMap(({groupId}) => this.groupService.deleteGroup(groupId).pipe(
             map(() => deleteGroupSuccess({ groupId: groupId })),
             catchError(error => of(addNotification({ desc: "Someting went wrong removing a group. Try it later again", isError: true })))
+        )
+        )
+    ))
+
+    createGroup$ = createEffect(() => this.actions$.pipe(
+        ofType(createGroup),
+        mergeMap(({group}) => this.groupService.createGroup(group).pipe(
+            map((group) => loadGroupSuccess({ group: group })),
+            catchError(error => of(addNotification({ desc: "Someting went wrong creating a new group. Try it later again", isError: true })))
         )
         )
     ))
