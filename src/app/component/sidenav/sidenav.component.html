@@ -8,10 +8,9 @@
         </div>
         <div id="sidenav-links">
             <app-sidenav-element (changeRef)="drawer.toggle()" title="User Overview" icon="person" [href]="['user']"></app-sidenav-element>
-            <app-sidenav-element title="Test 2"></app-sidenav-element>
-            <app-sidenav-element title="Test 3"></app-sidenav-element>
-            <app-sidenav-element title="Test 4"></app-sidenav-element>
-
+            <app-sidenav-element (changeRef)="drawer.toggle()" title="Add User" icon="person_add" [href]="['user', 'edit']"></app-sidenav-element>
+            <app-sidenav-element (changeRef)="drawer.toggle()" title="Group Overview" icon="group" [href]="['group']"></app-sidenav-element>
+            <app-sidenav-element (changeRef)="drawer.toggle()" title="Add Group" icon="group_add" [href]="['group', 'edit']"></app-sidenav-element>
         </div>
     </mat-drawer>
     <div id="drawer-launcher">
