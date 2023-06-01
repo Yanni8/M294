@@ -42,6 +42,7 @@ import { TestEditComponent } from './pages/test-edit/test-edit.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddUserOrGroupPopupComponent } from './component/test/add-user-or-group-popup/add-user-or-group-popup.component';
 import { SolveTestComponent } from './pages/solve-test/solve-test.component';
+import { SolutionEffect } from './stage/solution/solution.effect';
 
 export let AppInjector: Injector;
 
@@ -92,7 +93,7 @@ export function storageFactory(): OAuthStorage {
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({ "users": userReducer, "currentUser": whoamiReducer, "groups": groupReducer, "tests": testReducer }, {}),
-    EffectsModule.forRoot([UserEffect, GroupEffect, TestEffect]),
+    EffectsModule.forRoot([UserEffect, GroupEffect, TestEffect, SolutionEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,
     MatIconModule,

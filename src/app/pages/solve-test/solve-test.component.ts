@@ -6,8 +6,11 @@ import { select, Store } from '@ngrx/store';
 import { Answer } from 'src/app/model/solution/answer.model';
 import { Solution } from 'src/app/model/solution/solution.model';
 import { Test } from 'src/app/model/test/test.model';
+import { User } from 'src/app/model/user.model';
+import { saveSolution } from 'src/app/stage/solution/solution.action';
 import { fetchOwnTestById, fetchTestById } from 'src/app/stage/test/test.action';
 import { selectTestById } from 'src/app/stage/test/test.selector';
+import { selectCurrentUser } from 'src/app/stage/user/user.selector';
 
 @Component({
   selector: 'app-solve-test',
@@ -17,15 +20,17 @@ import { selectTestById } from 'src/app/stage/test/test.selector';
 export class SolveTestComponent implements OnInit {
 
   public test?: Test;
-
+  private testId: number = 0;
+  private me?: User;
   constructor(private store: Store, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.store.select(selectCurrentUser).subscribe(user => this.me = user);
     const testId = this.route.snapshot.paramMap.get("id");
     if (!testId) {
       return;
     }
-
+    this.testId = +testId;
     this.store.select(selectTestById({ id: +testId })).subscribe(test => { this.test = this.updateRendering(test) || undefined; });
     if (!this.test) {
       this.store.dispatch(fetchOwnTestById({ id: +testId }));
@@ -54,7 +59,7 @@ export class SolveTestComponent implements OnInit {
 
   submitAnswers() {
 
-    if (!this.test?.questions) {
+    if (!this.test?.questions || !this.me?.id) {
       return;
     }
     let solution: Solution = { answers: [] };
@@ -74,7 +79,8 @@ export class SolveTestComponent implements OnInit {
       solution.answers.push(answer);
     }
 
-    console.log(solution);
+    this.store.dispatch(saveSolution({solution: solution, testId: this.testId, userId: this.me.id}))
+    this.router.navigate(["test"]);
   }
   goBack() {
     this.router.navigate(["test"]);
