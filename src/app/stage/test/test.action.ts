@@ -1,3 +1,4 @@
+import { Expression } from "@angular/compiler";
 import { createAction, props } from "@ngrx/store";
 import { Test } from "src/app/model/test/test.model";
 
@@ -29,3 +30,8 @@ export const removeUserOrGroupSuccess = createAction(
     '[Collection] removing user or group from collecton',
     props<{testId: number, userGroupId: number, idType: string}>()
 ) 
+
+export const fetchTestById = createAction(
+    '[API] fetching test by id',
+    props<{id: number}>()
+)

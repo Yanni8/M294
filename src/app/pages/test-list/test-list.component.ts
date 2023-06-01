@@ -15,7 +15,7 @@ export class TestListComponent implements OnInit{
  
   public isAdmin: boolean = false;
   public tests: Array<Test> = [];
-  public displayedColumns: String[] = ['title', 'users', 'groups'];
+  public displayedColumns: String[] = ['title', 'users', 'groups', 'action'];
   public index = 0;
   public pageSize = 10;
   public previeTests: Array<Test> = [];

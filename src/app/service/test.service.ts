@@ -23,4 +23,8 @@ export class TestService{
     return this.http.put<Test>(`/api/v1/test/${testId}/uninvite?type=${type}&id=${userGroupId}`,{});
   }
 
+  public getTestById(id: number): Observable<Test>{
+    return this.http.get<Test>(`/api/v1/test/${id}/administrator`);
+  }
+
 }
