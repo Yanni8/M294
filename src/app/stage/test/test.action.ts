@@ -7,5 +7,15 @@ export const fetchAllTestsAdministrator = createAction(
 
 export const fetchAllTestsSuccess = createAction(
     '[Collection] load fetched tests in storage',
-    props<{tests: Array<Test>}>()
+    props<{ tests: Array<Test> }>()
+)
+
+export const saveTest = createAction(
+    '[API] saving new Test',
+    props<{ test: Test }>()
+)
+
+export const fetchTestSuccess = createAction(
+    '[Collecton] loading fetched test',
+    props<{ test: Test }>()
 )

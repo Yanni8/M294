@@ -4,7 +4,8 @@ import { Question } from "./question.model"
 
 export interface Test{
     id?: number,
-    question: Question,
-    groups: Array<Group>,
-    users: Array<User>
+    title: string,
+    questions: Array<Question>,
+    groups?: Array<Group>,
+    users?: Array<User>
 }

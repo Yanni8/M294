@@ -15,4 +15,8 @@ export class TestService{
     return this.http.get<Array<Test>>("/api/v1/test");
   }
 
+  public saveTest(test: Test): Observable<Test>{
+    return this.http.post<Test>("/api/v1/test", test);
+  }
+
 }
