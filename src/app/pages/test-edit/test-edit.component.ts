@@ -33,6 +33,7 @@ export class TestEditComponent implements OnInit{
     }
 
     this.store.dispatch(saveTest({test: test}));
+    this.router.navigate(['test']);
   }
 
   goBack(){ 
