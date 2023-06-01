@@ -43,7 +43,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddUserOrGroupPopupComponent } from './component/test/add-user-or-group-popup/add-user-or-group-popup.component';
 import { SolveTestComponent } from './pages/solve-test/solve-test.component';
 import { SolutionEffect } from './stage/solution/solution.effect';
-import { IsInRolesDirective } from './directives/is-in-roles.dir';
+import { AppIsInRolesDirective } from './directives/is-in-roles.dir';
 
 export let AppInjector: Injector;
 
@@ -82,7 +82,7 @@ export function storageFactory(): OAuthStorage {
     TestEditComponent,
     AddUserOrGroupPopupComponent,
     SolveTestComponent,
-    IsInRolesDirective,
+    AppIsInRolesDirective,
   ],
   imports: [
     OAuthModule.forRoot({
