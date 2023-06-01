@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Group } from 'src/app/model/group.model';
 import { User } from 'src/app/model/user.model';
 import { loadAllGroups } from 'src/app/stage/group/group.action';
-import { selectAllGroups, selectAllGroupsSorted } from 'src/app/stage/group/group.selector';
+import { selectAllGroups } from 'src/app/stage/group/group.selector';
 import { loadAllUsers } from 'src/app/stage/user/user.action';
 import { selectAllUsers } from 'src/app/stage/user/user.selector';
 

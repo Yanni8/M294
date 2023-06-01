@@ -7,13 +7,13 @@
             </button>
         </div>
         <div id="sidenav-links">
-            <app-sidenav-element *isInRoles="['admin']" (changeRef)="drawer.toggle()" title="User Overview" icon="person" [href]="['user']"></app-sidenav-element>
-            <app-sidenav-element *isInRoles="['admin']" (changeRef)="drawer.toggle()" title="Add User" icon="person_add" [href]="['user', 'edit']"></app-sidenav-element>
-            <app-sidenav-element *isInRoles="['admin']" (changeRef)="drawer.toggle()" title="Group Overview" icon="group" [href]="['group']"></app-sidenav-element>
-            <app-sidenav-element *isInRoles="['admin']" (changeRef)="drawer.toggle()" title="Add Group" icon="group_add" [href]="['group', 'edit']"></app-sidenav-element>
-            <app-sidenav-element *isInRoles="['user']" (changeRef)="drawer.toggle()" title="Perform Test" icon="quiz" [href]="['test']"></app-sidenav-element>
-            <app-sidenav-element *isInRoles="['admin']" (changeRef)="drawer.toggle()" title="Test Overview (Admin)" icon="quiz" [href]="['test', 'administrator']"></app-sidenav-element>
-            <app-sidenav-element *isInRoles="['admin']" (changeRef)="drawer.toggle()" title="Add Test" icon="list_alt_add" [href]="['test', 'administrator', 'edit']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRoles="['admin']" (changeRef)="drawer.toggle()" title="User Overview" icon="person" [href]="['user']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRoles="['admin']" (changeRef)="drawer.toggle()" title="Add User" icon="person_add" [href]="['user', 'edit']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRoles="['admin']" (changeRef)="drawer.toggle()" title="Group Overview" icon="group" [href]="['group']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRoles="['admin']" (changeRef)="drawer.toggle()" title="Add Group" icon="group_add" [href]="['group', 'edit']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRoles="['user']" (changeRef)="drawer.toggle()" title="Perform Test" icon="quiz" [href]="['test']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRoles="['admin']" (changeRef)="drawer.toggle()" title="Test Overview (Admin)" icon="quiz" [href]="['test', 'administrator']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRoles="['admin']" (changeRef)="drawer.toggle()" title="Add Test" icon="list_alt_add" [href]="['test', 'administrator', 'edit']"></app-sidenav-element>
         </div>
     </mat-drawer>
     <div id="drawer-launcher">

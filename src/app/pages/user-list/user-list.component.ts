@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/model/user.model';
 import { deleteUser, loadAllUsers } from 'src/app/stage/user/user.action';
-import { selectAllUsers, selectAllUsersSorted } from 'src/app/stage/user/user.selector';
+import { selectAllUsersSorted } from 'src/app/stage/user/user.selector';
 
 @Component({
   selector: 'app-user-list',

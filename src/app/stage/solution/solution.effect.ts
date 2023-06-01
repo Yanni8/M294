@@ -12,7 +12,7 @@ export class SolutionEffect {
     saveSolution$ = createEffect(() => this.actions$.pipe(
         ofType(saveSolution),
         mergeMap(({ solution, testId, userId }) => this.solutionService.submitSolution(solution, testId, userId).pipe(
-            map((tests) => addNotification({ desc: "Successfull submitted Test :)", isError: false })),
+            map(() => addNotification({ desc: "Successfull submitted Test :)", isError: false })),
             catchError(() => of(addNotification({ desc: "Someting went wrong requesting all Tests. Try it later again", isError: true })))
         )
         )

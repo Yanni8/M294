@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CorrectedAnswers } from '../model/solution/correctedAnswers.model';
 import { CorrectedSolution } from '../model/solution/correctedSolution.model';
 import { Solution } from '../model/solution/solution.model';
 

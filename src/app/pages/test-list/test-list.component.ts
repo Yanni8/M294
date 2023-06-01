@@ -6,7 +6,7 @@ import { AddUserOrGroupPopupComponent } from 'src/app/component/test/add-user-or
 import { Test } from 'src/app/model/test/test.model';
 import { AppAuthService } from 'src/app/service/app.auth.service';
 import { addUserOrGroup, deleteTestById, fetchAllTestsAdministrator, fetchOwnTests, removeUserOrGroup } from 'src/app/stage/test/test.action';
-import { selectAllTests, selectAllTestsSorted } from 'src/app/stage/test/test.selector';
+import { selectAllTestsSorted } from 'src/app/stage/test/test.selector';
 
 @Component({
   selector: 'app-test-list',

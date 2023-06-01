@@ -5,7 +5,7 @@ import { AddUserPopupComponent } from 'src/app/component/group/add-user-popup/ad
 import { Group } from 'src/app/model/group.model';
 import { User } from 'src/app/model/user.model';
 import { deleteGroup, inviteUserToGroup, loadAllGroups, removeUser } from 'src/app/stage/group/group.action';
-import { selectAllGroups, selectAllGroupsSorted } from 'src/app/stage/group/group.selector';
+import { selectAllGroupsSorted } from 'src/app/stage/group/group.selector';
 
 @Component({
   selector: 'app-group-list',
