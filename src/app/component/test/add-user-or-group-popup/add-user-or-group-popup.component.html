@@ -1,0 +1,22 @@
+<div id="popup-wrapper">
+    <h1>Hello from Popup</h1>
+    <form>
+        <mat-form-field>
+            <mat-label>User or Group</mat-label>
+            <input #userOrGroup (input)="filter(userOrGroup.value)" type="text"
+                   placeholder="Select User"
+                   matInput
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option  *ngFor="let unknownVar of previewUserGroup" [value]="unknownVar.name">
+                    {{unknownVar.name}} ({{unknownVar.type}})
+                </mat-option>
+            </mat-autocomplete>
+
+        </mat-form-field>
+    </form>
+    <div id="popup-action">
+        <button mat-stroked-button [mat-dialog-close]="" color="warn">Close</button>
+        <button mat-stroked-button color="primary">Invite</button>
+    </div>
+</div>

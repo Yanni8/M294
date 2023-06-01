@@ -40,6 +40,7 @@ import { TestEffect } from './stage/test/test.effect';
 import { testReducer } from './stage/test/test.reducer';
 import { TestEditComponent } from './pages/test-edit/test-edit.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AddUserOrGroupPopupComponent } from './component/test/add-user-or-group-popup/add-user-or-group-popup.component';
 
 export let AppInjector: Injector;
 
@@ -76,6 +77,7 @@ export function storageFactory(): OAuthStorage {
     GroupEditComponent,
     TestListComponent,
     TestEditComponent,
+    AddUserOrGroupPopupComponent,
   ],
   imports: [
     OAuthModule.forRoot({

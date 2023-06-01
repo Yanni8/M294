@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AddUserOrGroupPopupComponent } from 'src/app/component/test/add-user-or-group-popup/add-user-or-group-popup.component';
 import { Test } from 'src/app/model/test/test.model';
 import { AppAuthService } from 'src/app/service/app.auth.service';
 import { deleteTestById, fetchAllTestsAdministrator, removeUserOrGroup } from 'src/app/stage/test/test.action';
@@ -20,7 +22,7 @@ export class TestListComponent implements OnInit{
   public pageSize = 10;
   public previeTests: Array<Test> = [];
 
-  constructor(private authService: AppAuthService, private router: Router, private store: Store) { }
+  constructor(private authService: AppAuthService, private router: Router, private store: Store, private dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -55,5 +57,18 @@ export class TestListComponent implements OnInit{
 
   deleteTest(id: number){
     this.store.dispatch(deleteTestById({id: id}));
+  }
+
+  addUserOrGroup(id: number){
+    const dialogRef = this.dialog.open(AddUserOrGroupPopupComponent, {
+      height: '20rem',
+      width: '30rem',
+    });
+/**
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+    */
   }
 }
