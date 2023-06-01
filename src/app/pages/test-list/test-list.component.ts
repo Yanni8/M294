@@ -26,8 +26,6 @@ export class TestListComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.authService.getRoles().subscribe(roles => {if(roles.indexOf("admin") !== -1){this.router.navigate(['test', 'administrator'])}})
-
     this.isAdmin = window.location.pathname === "/test/administrator"
     if(this.isAdmin){
       this.store.dispatch(fetchAllTestsAdministrator())
