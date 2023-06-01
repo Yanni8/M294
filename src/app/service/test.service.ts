@@ -41,4 +41,9 @@ export class TestService{
     return this.http.get<Array<Test>>("/api/v1/test/whoami");
   }
 
+  public getOwnTestById(id: number): Observable<Test>{
+    return this.http.get<Test>(`/api/v1/test/${id}`);
+  }
+
+
 }

@@ -1,0 +1,18 @@
+<div id="test-solve-wapper">
+    <h1 id="test-title">{{test?.title}}</h1>
+    <div id="question-wrapper">
+        <div class="question-box" *ngFor="let question of test?.questions">
+            <h2>{{question.question}}{{question.question.endsWith("?") ? "" : "?"}}</h2>
+            <div>
+                <div *ngFor="let answer of question.answerPossibilities">
+                    <mat-checkbox [(ngModel)]="answer.correctAnswer" class="example-margin">{{answer.answer}}</mat-checkbox>
+                </div>
+            </div>
+            <div class="question-seperator"></div>
+        </div>
+    </div>
+    <div id="action-wrapper">
+        <button (click)="goBack()" mat-stroked-button color="warn">Go Back</button>
+        <button (click)="submitAnswers()" mat-stroked-button color="basic">Save Test</button>
+</div>
+</div>
