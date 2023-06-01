@@ -49,3 +49,7 @@ export const addUserOrGroup = createAction(
     '[Api] Add user or group',
     props<{testId: number, userGroupId: number, idType: string}>()
 )
+
+export const fetchOwnTests = createAction(
+    '[API] fetching thats that user is assigned'
+)

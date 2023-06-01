@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AddUserOrGroupPopupComponent } from 'src/app/component/test/add-user-or-group-popup/add-user-or-group-popup.component';
 import { Test } from 'src/app/model/test/test.model';
 import { AppAuthService } from 'src/app/service/app.auth.service';
-import { addUserOrGroup, deleteTestById, fetchAllTestsAdministrator, removeUserOrGroup } from 'src/app/stage/test/test.action';
+import { addUserOrGroup, deleteTestById, fetchAllTestsAdministrator, fetchOwnTests, removeUserOrGroup } from 'src/app/stage/test/test.action';
 import { selectAllTests } from 'src/app/stage/test/test.selector';
 
 @Component({
@@ -31,6 +31,9 @@ export class TestListComponent implements OnInit{
     this.isAdmin = window.location.pathname === "/test/administrator"
     if(this.isAdmin){
       this.store.dispatch(fetchAllTestsAdministrator())
+    } else{
+      this.store.dispatch(fetchOwnTests());
+      this.displayedColumns = ["title"];
     }
 
     this.store.select(selectAllTests).subscribe(tests => {this.tests = tests; this.updatePreviewTests()});

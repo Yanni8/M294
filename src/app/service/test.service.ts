@@ -37,4 +37,8 @@ export class TestService{
     return this.http.put<Test>(`/api/v1/test/${testId}/invite?type=${type}&userGroupId=${userGroupId}`,{});
   }
 
+  public whoami(): Observable<Array<Test>>{
+    return this.http.get<Array<Test>>("/api/v1/test/whoami");
+  }
+
 }
