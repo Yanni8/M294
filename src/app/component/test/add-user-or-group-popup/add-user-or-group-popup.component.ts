@@ -29,7 +29,7 @@ export class AddUserOrGroupPopupComponent implements OnInit{
   constructor(private store: Store){}
 
   public reloadFilter(){
-    let newUserGroup: Array<UserGroup> = [];
+    const newUserGroup: Array<UserGroup> = [];
     this.users.forEach(user => newUserGroup.push({name: user.username, id: user.id || 0, type: "user"}));
     this.groups.forEach(group => newUserGroup.push({name: group.groupName, id: group.id || 0, type: "group"}));
     this.userGroup = newUserGroup;

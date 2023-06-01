@@ -27,7 +27,6 @@ export class UserListComponent implements OnInit{
     } else{
       this.previewUsers = this.users.slice(this.pageSize * this.index, this.pageSize * (this.index + 1));
     }
-    console.log(this.users);
   }
 
   ngOnInit(): void {

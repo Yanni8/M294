@@ -68,7 +68,6 @@ export class TestListComponent implements OnInit{
       if(!result){
         return;
       }
-      console.log(result);
       this.store.dispatch(addUserOrGroup({idType: result.type, testId: id, userGroupId: result.id}));
     });
   }
