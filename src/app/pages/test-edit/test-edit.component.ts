@@ -35,11 +35,11 @@ export class TestEditComponent {
     this.store.dispatch(saveTest({ test: test }));
 
 
-    this.router.navigate(['test']);
+    this.router.navigate(['test', "administrator"]);
   }
 
   goBack() {
-    this.router.navigate(['test'])
+    this.router.navigate(['test', "administrator"])
   }
 
 }
