@@ -6,7 +6,7 @@ import { AddUserOrGroupPopupComponent } from 'src/app/component/test/add-user-or
 import { Test } from 'src/app/model/test/test.model';
 import { AppAuthService } from 'src/app/service/app.auth.service';
 import { addUserOrGroup, deleteTestById, fetchAllTestsAdministrator, fetchOwnTests, removeUserOrGroup } from 'src/app/stage/test/test.action';
-import { selectAllTests } from 'src/app/stage/test/test.selector';
+import { selectAllTests, selectAllTestsSorted } from 'src/app/stage/test/test.selector';
 
 @Component({
   selector: 'app-test-list',
@@ -34,7 +34,7 @@ export class TestListComponent implements OnInit{
       this.displayedColumns = ["title", "userAction"];
     }
 
-    this.store.select(selectAllTests).subscribe(tests => {this.tests = tests; this.updatePreviewTests()});
+    this.store.select(selectAllTestsSorted()).subscribe(tests => {this.tests = tests; this.updatePreviewTests()});
     
   }
   updatePreviewTests(){

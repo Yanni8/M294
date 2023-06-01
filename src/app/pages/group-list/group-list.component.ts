@@ -5,7 +5,7 @@ import { AddUserPopupComponent } from 'src/app/component/group/add-user-popup/ad
 import { Group } from 'src/app/model/group.model';
 import { User } from 'src/app/model/user.model';
 import { deleteGroup, inviteUserToGroup, loadAllGroups, removeUser } from 'src/app/stage/group/group.action';
-import { selectAllGroups } from 'src/app/stage/group/group.selector';
+import { selectAllGroups, selectAllGroupsSorted } from 'src/app/stage/group/group.selector';
 
 @Component({
   selector: 'app-group-list',
@@ -24,7 +24,7 @@ export class GroupListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadAllGroups());
-    this.store.select(selectAllGroups).subscribe(groups => { this.groups = groups; this.updatePreviewUser() });
+    this.store.select(selectAllGroupsSorted()).subscribe(groups => { this.groups = groups; this.updatePreviewUser() });
   }
 
   updatePreviewUser() {

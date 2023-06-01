@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from 'src/app/model/user.model';
 import { deleteUser, loadAllUsers } from 'src/app/stage/user/user.action';
-import { selectAllUsers } from 'src/app/stage/user/user.selector';
+import { selectAllUsers, selectAllUsersSorted } from 'src/app/stage/user/user.selector';
 
 @Component({
   selector: 'app-user-list',
@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.dispatch(loadAllUsers());
-    this.store.select(selectAllUsers).subscribe(_users => {this.users = _users; this.updatePreviewUser()}); 
+    this.store.select(selectAllUsersSorted()).subscribe(_users => {this.users = _users; this.updatePreviewUser()}); 
   }
 
   changePage(event: any){
