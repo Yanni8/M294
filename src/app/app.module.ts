@@ -38,6 +38,8 @@ import { GroupEditComponent } from './pages/group-edit/group-edit.component';
 import { TestListComponent } from './pages/test-list/test-list.component'; 
 import { TestEffect } from './stage/test/test.effect';
 import { testReducer } from './stage/test/test.reducer';
+import { TestEditComponent } from './pages/test-edit/test-edit.component';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 
 export let AppInjector: Injector;
 
@@ -73,6 +75,7 @@ export function storageFactory(): OAuthStorage {
     AddUserPopupComponent,
     GroupEditComponent,
     TestListComponent,
+    TestEditComponent,
   ],
   imports: [
     OAuthModule.forRoot({
@@ -98,6 +101,7 @@ export function storageFactory(): OAuthStorage {
     MatInputModule,
     MatDialogModule,
     MatAutocompleteModule,
+    MatCheckboxModule,
   ],
   providers: [
     {

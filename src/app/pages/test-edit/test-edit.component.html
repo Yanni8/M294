@@ -1,0 +1,42 @@
+<div id="test-edit-wrapper">
+    <div id="test-edit-form">
+        <mat-form-field class="test-edit-form-field">
+            <mat-label>Test Name</mat-label>
+            <input appAutofocus [formControl]="testTitle" matInput maxlength="250" required>
+            <mat-error *ngIf="testTitle.hasError('required')">Name is
+                <strong>required</strong>!</mat-error>
+        </mat-form-field>
+        <div id="test-question-editor">
+            <div id="question-field" [style.height]="6.8 * question.answerPossibilities.length + 10 + 'rem'" *ngFor="let question of questions">
+                <mat-form-field class="test-edit-form-field">
+                    <mat-label>Question</mat-label>
+                    <input appAutofocus [(ngModel)]="question.question" matInput maxlength="250" required>
+                </mat-form-field>
+                <div id="answer-possibility-wrapper">
+                    <div class="answer-possibility" *ngFor="let answer of question.answerPossibilities">
+                        <mat-form-field class="test-edit-form-field">
+                            <mat-label>Answer</mat-label>
+                            <input [(ngModel)]="answer.answer" appAutofocus matInput maxlength="250" required>
+                            <mat-error *ngIf="answer.answer.length === 0">Answer is
+                                <strong>required</strong>!</mat-error>
+                        </mat-form-field>                
+                        <mat-checkbox [(ngModel)]="answer.correctAnswer" class="example-margin">Is Correct</mat-checkbox>
+                    </div>
+
+                    <button id="add-answer-button" mat-stroked-button color="primary"
+                        (click)="question.answerPossibilities.push({answer: '', correctAnswer: false})">Add
+                        Answer</button>
+                </div>
+
+            </div>
+        </div>
+        <div (click)="addNewQuestion()" id="add-question-field">
+            <h1 class="add-question-content">Add new Question</h1>
+            <mat-icon class="add-question-content">add</mat-icon>
+        </div>
+        <div id="test-form-action">
+            <button (click)="goBack()" mat-stroked-button color="warn">Go Back</button>
+            <button mat-stroked-button color="basic">Save Test</button>
+        </div>
+    </div>
+</div>
