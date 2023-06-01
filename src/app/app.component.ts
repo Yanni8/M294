@@ -1,5 +1,4 @@
-import { Component, HostListener, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from './model/user.model';
 import { whoami } from './stage/user/user.action';
@@ -12,7 +11,6 @@ import { selectCurrentUser } from './stage/user/user.selector';
 })
 export class AppComponent implements OnInit{
 
-  private accessToken: String = "";
 
   public currentUser: User | null = null;
 

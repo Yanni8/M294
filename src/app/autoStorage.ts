@@ -7,7 +7,6 @@ export class CustomAuthStorage implements OAuthStorage {
 
     private store!: Store;
 
-    constructor() { }
     removeItem(key: string): void {
         if (this.store == null && AppInjector) {
             this.store = AppInjector.get(Store);

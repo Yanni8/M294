@@ -1,4 +1,4 @@
 export interface Notification{
-    desc: String;
+    desc: string;
     isError: boolean;
 }

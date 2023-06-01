@@ -1,6 +1,5 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Question } from 'src/app/model/test/question.model';
@@ -12,15 +11,11 @@ import { saveTest } from 'src/app/stage/test/test.action';
   templateUrl: './test-edit.component.html',
   styleUrls: ['./test-edit.component.less']
 })
-export class TestEditComponent implements OnInit {
+export class TestEditComponent {
 
   public testTitle = new FormControl("", [Validators.required, Validators.maxLength(250)]);
   public questions: Array<Question> = [];
   constructor(private router: Router, private store: Store, private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-
-  }
 
   addNewQuestion() {
     this.questions.push({ question: "", answerPossibilities: [] })
@@ -28,9 +23,12 @@ export class TestEditComponent implements OnInit {
 
   saveTest() {
 
-
-    let test: Test = {
-      title: this.testTitle.value!,
+    if(!this.testTitle.value) {
+      return;
+    }
+    
+    const test: Test = {
+      title: this.testTitle.value,
       questions: this.questions
     }
 

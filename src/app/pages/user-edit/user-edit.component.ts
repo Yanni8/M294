@@ -1,8 +1,7 @@
-import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { User } from 'src/app/model/user.model';
 import { createUser, loadUserById, updateUser } from 'src/app/stage/user/user.action';
 import { selectUserById } from 'src/app/stage/user/user.selector';

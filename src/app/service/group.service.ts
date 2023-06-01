@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { USER_PROVIDED_EFFECTS } from '@ngrx/effects';
 import { Observable } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Group } from '../model/group.model';
 import { User } from '../model/user.model';
 

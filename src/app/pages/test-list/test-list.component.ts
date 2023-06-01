@@ -13,9 +13,9 @@ import { selectAllTests } from 'src/app/stage/test/test.selector';
 })
 export class TestListComponent implements OnInit{
  
-  public isAdmin: boolean = false;
+  public isAdmin = false;
   public tests: Array<Test> = [];
-  public displayedColumns: String[] = ['title', 'users', 'groups', 'action'];
+  public displayedColumns: string[] = ['title', 'users', 'groups', 'action'];
   public index = 0;
   public pageSize = 10;
   public previeTests: Array<Test> = [];

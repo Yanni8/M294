@@ -13,7 +13,7 @@ export class UserEffect {
         ofType(loadAllUsers),
         mergeMap(() => this.userService.getUsers().pipe(
             map((users) => loadAllUsersSuccess({ users: users })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong requesting all Users. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong requesting all Users. Try it later again", isError: true })))
         )
         )
     ))
@@ -22,7 +22,7 @@ export class UserEffect {
         ofType(whoami),
         mergeMap(() => this.userService.whoami().pipe(
             map((user) => whoamiSuccess({ user: user })),
-            catchError(error => of(addNotification({ desc: "You need to sing up in to use this Application", isError: true })))
+            catchError(() => of(addNotification({ desc: "You need to sing up in to use this Application", isError: true })))
         )
         )
     ))
@@ -31,7 +31,7 @@ export class UserEffect {
         ofType(deleteUser),
         mergeMap(({ id }) => this.userService.deleteUser(id).pipe(
             map(() => deleteUserSucess({ id: id })),
-            catchError(error => of(addNotification({ desc: "Something went wrong why trying to delete a User", isError: true })))
+            catchError(() => of(addNotification({ desc: "Something went wrong why trying to delete a User", isError: true })))
         )
         )
     ))
@@ -40,7 +40,7 @@ export class UserEffect {
         ofType(loadUserById),
         mergeMap(({ id }) => this.userService.getUserById(id).pipe(
             map((user) => loadUserSuccess({ user: user })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong requesting a Users. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong requesting a Users. Try it later again", isError: true })))
         )
         )
     ))
@@ -49,7 +49,7 @@ export class UserEffect {
         ofType(updateUser),
         mergeMap(({ user }) => this.userService.updateUser(user).pipe(
             map((user) => updateUserSuccess({ user: user })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong updating a Users. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong updating a Users. Try it later again", isError: true })))
         )
         )
     ))
@@ -59,9 +59,9 @@ export class UserEffect {
         ofType(createUser),
         mergeMap(({ user }) => this.userService.saveUser(user).pipe(
             map((user) => loadUserSuccess({ user: user })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong creating a new Users. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong creating a new Users. Try it later again", isError: true })))
         )
         )
     ))
 
-};
+}

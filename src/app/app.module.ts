@@ -12,34 +12,34 @@ import { HttpClientModule } from "@angular/common/http";
 import { userReducer, whoamiReducer } from './stage/user/user.reducer';
 import { UserEffect } from './stage/user/user.effect';
 import { SidenavComponent } from './component/sidenav/sidenav.component';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatIconModule} from '@angular/material/icon'; 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { SidenavElementComponent } from './component/sidenav/sidenav-element/sidenav-element.component'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavElementComponent } from './component/sidenav/sidenav-element/sidenav-element.component';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { AppAuthGuard } from './guard/app.auth.guard';
 import { LoginLogoutComponent } from './component/login-logout/login-logout.component';
 import { AppAuthService } from './service/app.auth.service';
 import { CustomAuthStorage } from './autoStorage';
-import {MatTableModule} from '@angular/material/table'; 
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { UserEditComponent } from './pages/user-edit/user-edit.component'; 
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { UserEditComponent } from './pages/user-edit/user-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { GroupListComponent } from './pages/group-list/group-list.component';
 import { GroupEffect } from './stage/group/group.effect';
 import { groupReducer } from './stage/group/group.reducer';
 import { AddUserPopupComponent } from './component/group/add-user-popup/add-user-popup.component';
-import {MatDialogModule} from '@angular/material/dialog'; 
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { GroupEditComponent } from './pages/group-edit/group-edit.component';
-import { TestListComponent } from './pages/test-list/test-list.component'; 
+import { TestListComponent } from './pages/test-list/test-list.component';
 import { TestEffect } from './stage/test/test.effect';
 import { testReducer } from './stage/test/test.reducer';
 import { TestEditComponent } from './pages/test-edit/test-edit.component';
-import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 export let AppInjector: Injector;
 
@@ -87,7 +87,7 @@ export function storageFactory(): OAuthStorage {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({"users": userReducer, "currentUser" : whoamiReducer, "groups": groupReducer, "tests": testReducer}, {}),
+    StoreModule.forRoot({ "users": userReducer, "currentUser": whoamiReducer, "groups": groupReducer, "tests": testReducer }, {}),
     EffectsModule.forRoot([UserEffect, GroupEffect, TestEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,
@@ -116,7 +116,7 @@ export function storageFactory(): OAuthStorage {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor(authService: AppAuthService, private injector: Injector) {
     authService.initAuth().finally()
     AppInjector = injector;

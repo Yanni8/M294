@@ -15,7 +15,7 @@ import { selectAllGroups } from 'src/app/stage/group/group.selector';
 export class GroupListComponent implements OnInit {
 
   public groups: Array<Group> = [];
-  public displayedColumns: String[] = ['groupName', 'users', 'action'];
+  public displayedColumns: string[] = ['groupName', 'users', 'action'];
   public index = 0;
   public pageSize = 10;
   public previewGroups: Array<Group> = [];
@@ -47,7 +47,7 @@ export class GroupListComponent implements OnInit {
   }
 
   addUser(groupId: number){
-    let dialogRef = this.dialog.open(AddUserPopupComponent, {
+    const dialogRef = this.dialog.open(AddUserPopupComponent, {
       height: '20rem',
       width: '30rem',
     });

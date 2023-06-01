@@ -13,7 +13,7 @@ export class GroupEffect {
         ofType(loadAllGroups),
         mergeMap(() => this.groupService.getGroups().pipe(
             map((groups) => loadAllGroupsSuccess({ groups: groups })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong requesting all Groups. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong requesting all Groups. Try it later again", isError: true })))
         )
         )
     ))
@@ -22,7 +22,7 @@ export class GroupEffect {
         ofType(inviteUserToGroup),
         mergeMap(({user, groupId}) => this.groupService.inviteUser(user, groupId).pipe(
             map((group) => loadGroupSuccess({ group: group })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong inviting a user to a group. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong inviting a user to a group. Try it later again", isError: true })))
         )
         )
     ))
@@ -31,7 +31,7 @@ export class GroupEffect {
         ofType(removeUser),
         mergeMap(({user, groupId}) => this.groupService.removeUser(user, groupId).pipe(
             map((group) => loadGroupSuccess({ group: group })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong removing a user from a group. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong removing a user from a group. Try it later again", isError: true })))
         )
         )
     ))
@@ -40,7 +40,7 @@ export class GroupEffect {
         ofType(deleteGroup),
         mergeMap(({groupId}) => this.groupService.deleteGroup(groupId).pipe(
             map(() => deleteGroupSuccess({ groupId: groupId })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong removing a group. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong removing a group. Try it later again", isError: true })))
         )
         )
     ))
@@ -49,7 +49,7 @@ export class GroupEffect {
         ofType(createGroup),
         mergeMap(({group}) => this.groupService.createGroup(group).pipe(
             map((group) => loadGroupSuccess({ group: group })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong creating a new group. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong creating a new group. Try it later again", isError: true })))
         )
         )
     ))
@@ -58,7 +58,7 @@ export class GroupEffect {
         ofType(loadGroupById),
         mergeMap(({id}) => this.groupService.getGroupById(id).pipe(
             map((group) => loadGroupSuccess({ group: group })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong requesting a group. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong requesting a group. Try it later again", isError: true })))
         )
         )
     ))
@@ -67,7 +67,7 @@ export class GroupEffect {
         ofType(updateGroup),
         mergeMap(({group}) => this.groupService.updateGroup(group).pipe(
             map((group) => loadGroupSuccess({ group: group })),
-            catchError(error => of(addNotification({ desc: "Someting went wrong updating a group. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "Someting went wrong updating a group. Try it later again", isError: true })))
         )
         )
     ))

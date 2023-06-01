@@ -1,4 +1,4 @@
-import { createAction, createReducer, props } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
 import { Group } from "src/app/model/group.model";
 import { User } from "src/app/model/user.model";
 

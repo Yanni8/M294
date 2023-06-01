@@ -1,4 +1,3 @@
-import { Title } from "@angular/platform-browser"
 import { createReducer, on } from "@ngrx/store"
 import { Notification } from "src/app/model/notification.model"
 import { addNotification, removeFirstNotification } from "./notification.action"
@@ -12,7 +11,7 @@ export const notificationReducer = createReducer(
     on(removeFirstNotification, (state) => {
         if(state.length != 0){
             state.shift()
-        };
+        }
         return state;
     })
 );

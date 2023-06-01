@@ -7,11 +7,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SidenavElementComponent {
 
-  @Input("title") public title: String = "";
-  @Input("icon") public icon: String =  "assignment_late";
-  @Input("href") public href: Array<String> = ["/"];
+  @Input() public title = "";
+  @Input() public icon =  "assignment_late";
+  @Input() public href: Array<string> = ["/"];
 
 
-  @Output("changeRef") public changeRefEvent = new EventEmitter<void>(); 
+  @Output() public changeRef = new EventEmitter<void>(); 
 
 }
