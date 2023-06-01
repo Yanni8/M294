@@ -1,9 +1,28 @@
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="previeSolutions">
+        <ng-container matColumnDef="test">
+            <th mat-header-cell *matHeaderCellDef> Test </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.templateTest.title}}
+            </td>
+        </ng-container>
         <ng-container matColumnDef="user">
-            <th mat-header-cell *matHeaderCellDef> User </th>
+            <th mat-header-cell *matHeaderCellDef> Preforming User </th>
             <td mat-cell *matCellDef="let element">
                 {{element.user.username}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="score">
+            <th mat-header-cell *matHeaderCellDef> Score</th>
+            <td mat-cell *matCellDef="let element">
+                {{generateScore(element)}}%
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action</th>
+            <td mat-cell *matCellDef="let element">
+                <button [routerLink]="['details', element.id]" mat-stroked-button color="primary">View Details</button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

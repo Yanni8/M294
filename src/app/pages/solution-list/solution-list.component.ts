@@ -12,7 +12,7 @@ import { selectAllSolutions } from 'src/app/stage/solution/solution.selector';
 export class SolutionListComponent implements OnInit {
 
   public solutions: Array<CorrectedSolution> = [];
-  public displayedColumns: string[] = ['user'];
+  public displayedColumns: string[] = ['test', 'user', 'score', 'action'];
   public index = 0;
   public pageSize = 10;
   public previeSolutions: Array<CorrectedSolution> = [];
@@ -37,5 +37,15 @@ export class SolutionListComponent implements OnInit {
     this.index = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updatePreviewSolutions()
+  }
+
+  generateScore(solution: CorrectedSolution){
+    let right: number = 0, wrong: number = 0;
+    for(let answer of solution.answers){
+      right += answer.right?.length || 0;
+      wrong += answer.wrong?.length || 0; 
+    }
+
+    return  Math.ceil(right / (right + wrong) * 1000) / 10; 
   }
 }
