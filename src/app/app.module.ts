@@ -44,6 +44,8 @@ import { AddUserOrGroupPopupComponent } from './component/test/add-user-or-group
 import { SolveTestComponent } from './pages/solve-test/solve-test.component';
 import { SolutionEffect } from './stage/solution/solution.effect';
 import { AppIsInRolesDirective } from './directives/is-in-roles.dir';
+import { SolutionListComponent } from './pages/solution-list/solution-list.component';
+import { solutuionReducer } from './stage/solution/solution.reducer';
 
 export let AppInjector: Injector;
 
@@ -83,6 +85,7 @@ export function storageFactory(): OAuthStorage {
     AddUserOrGroupPopupComponent,
     SolveTestComponent,
     AppIsInRolesDirective,
+    SolutionListComponent,
   ],
   imports: [
     OAuthModule.forRoot({
@@ -94,7 +97,7 @@ export function storageFactory(): OAuthStorage {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ "users": userReducer, "currentUser": whoamiReducer, "groups": groupReducer, "tests": testReducer }, {}),
+    StoreModule.forRoot({ "users": userReducer, "currentUser": whoamiReducer, "groups": groupReducer, "tests": testReducer, "solutions": solutuionReducer }, {}),
     EffectsModule.forRoot([UserEffect, GroupEffect, TestEffect, SolutionEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,

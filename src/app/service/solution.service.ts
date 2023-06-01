@@ -16,4 +16,8 @@ export class SolutionService {
     return this.http.post<CorrectedSolution>(`/api/v1/solution/?testId=${testId}&userId=${userId}`, solution);
   }
 
+  public getSolutions(): Observable<Array<CorrectedSolution>>{
+    return this.http.get<Array<CorrectedSolution>>("/api/v1/solution/");
+  }
+
 }

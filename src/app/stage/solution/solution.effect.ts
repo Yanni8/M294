@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
 import { SolutionService } from "src/app/service/solution.service";
 import { addNotification } from "../notification/notification.action";
-import { saveSolution } from "./solution.action";
+import { fetchAllSolutions, fetchAllSolutionsSuccess, saveSolution } from "./solution.action";
 
 @Injectable()
 export class SolutionEffect {
@@ -14,6 +14,15 @@ export class SolutionEffect {
         mergeMap(({ solution, testId, userId }) => this.solutionService.submitSolution(solution, testId, userId).pipe(
             map(() => addNotification({ desc: "Successfull submitted Test :)", isError: false })),
             catchError(() => of(addNotification({ desc: "Someting went wrong requesting all Tests. Try it later again", isError: true })))
+        )
+        )
+    ))
+
+    getAllSolutions$ = createEffect(() => this.actions$.pipe(
+        ofType(fetchAllSolutions),
+        mergeMap(() => this.solutionService.getSolutions().pipe(
+            map((solutions) => fetchAllSolutionsSuccess({ solutions: solutions })),
+            catchError(() => of(addNotification({ desc: "Someting went wrong requesting all Sollutions. Try it later again", isError: true })))
         )
         )
     ))
