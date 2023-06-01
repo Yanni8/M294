@@ -33,7 +33,7 @@ export class TestListComponent implements OnInit{
       this.store.dispatch(fetchAllTestsAdministrator())
     } else{
       this.store.dispatch(fetchOwnTests());
-      this.displayedColumns = ["title"];
+      this.displayedColumns = ["title", "userAction"];
     }
 
     this.store.select(selectAllTests).subscribe(tests => {this.tests = tests; this.updatePreviewTests()});
