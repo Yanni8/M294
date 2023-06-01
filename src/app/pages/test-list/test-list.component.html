@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-    <div id="add-test-button-wrapper">
+    <div *ngIf="isAdmin" id="add-test-button-wrapper">
         <button id="add-test-button" mat-icon-button [routerLink]="['edit']" color="primary">
             <mat-icon>add</mat-icon>
         </button>
