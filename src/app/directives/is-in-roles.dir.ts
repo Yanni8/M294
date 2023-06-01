@@ -4,7 +4,7 @@ import {takeUntil} from 'rxjs/operators';
 import {AppAuthService} from '../service/app.auth.service';
 
 @Directive({
-  selector: '[appIsInRoles]'
+  selector: '[isInRoles]'
 })
 export class IsInRolesDirective implements OnInit, OnDestroy {
 
