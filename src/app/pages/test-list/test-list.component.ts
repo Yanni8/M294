@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AddUserOrGroupPopupComponent } from 'src/app/component/test/add-user-or-group-popup/add-user-or-group-popup.component';
 import { Test } from 'src/app/model/test/test.model';
 import { AppAuthService } from 'src/app/service/app.auth.service';
-import { deleteTestById, fetchAllTestsAdministrator, removeUserOrGroup } from 'src/app/stage/test/test.action';
+import { addUserOrGroup, deleteTestById, fetchAllTestsAdministrator, removeUserOrGroup } from 'src/app/stage/test/test.action';
 import { selectAllTests } from 'src/app/stage/test/test.selector';
 
 @Component({
@@ -64,11 +64,12 @@ export class TestListComponent implements OnInit{
       height: '20rem',
       width: '30rem',
     });
-/**
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      if(!result){
+        return;
+      }
+      console.log(result);
+      this.store.dispatch(addUserOrGroup({idType: result.type, testId: id, userGroupId: result.id}));
     });
-    */
   }
 }

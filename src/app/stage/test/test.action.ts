@@ -44,3 +44,8 @@ export const deleteTestSuccess = createAction(
     '[Collection] deleting in collection',
     props<{id: number}>()
 )
+
+export const addUserOrGroup = createAction(
+    '[Api] Add user or group',
+    props<{testId: number, userGroupId: number, idType: string}>()
+)

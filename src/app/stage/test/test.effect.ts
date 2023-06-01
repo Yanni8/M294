@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of } from "rxjs";
 import { TestService } from "src/app/service/test.service";
 import { addNotification } from "../notification/notification.action";
-import { deleteTestById, deleteTestSuccess, fetchAllTestsAdministrator, fetchAllTestsSuccess, fetchTestById, fetchTestSuccess, removeUserOrGroup, removeUserOrGroupSuccess, saveTest } from "./test.action";
+import { addUserOrGroup, deleteTestById, deleteTestSuccess, fetchAllTestsAdministrator, fetchAllTestsSuccess, fetchTestById, fetchTestSuccess, removeUserOrGroup, removeUserOrGroupSuccess, saveTest } from "./test.action";
 
 @Injectable()
 export class TestEffect {
@@ -49,6 +49,15 @@ export class TestEffect {
         ofType(deleteTestById),
         mergeMap(({id}) => this.testService.deleteTest(id).pipe(
             map(() => deleteTestSuccess({id: id})),
+            catchError(() => of(addNotification({ desc: "Someting went wrong deleting a Test. Try it later again", isError: true })))
+        )
+        )
+    ))
+
+    addUserOrGroup$ = createEffect(() => this.actions$.pipe(
+        ofType(addUserOrGroup),
+        mergeMap(({idType, testId, userGroupId}) => this.testService.addUserOrGroup(testId, userGroupId, idType).pipe(
+            map(() => fetchTestById({id: testId})),
             catchError(() => of(addNotification({ desc: "Someting went wrong deleting a Test. Try it later again", isError: true })))
         )
         )

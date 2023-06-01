@@ -33,4 +33,8 @@ export class TestService{
     return this.http.delete<void>(`/api/v1/test/${id}`);
   }
 
+  public addUserOrGroup(testId: number, userGroupId: number, type: string): Observable<Test>{
+    return this.http.put<Test>(`/api/v1/test/${testId}/invite?type=${type}&userGroupId=${userGroupId}`,{});
+  }
+
 }

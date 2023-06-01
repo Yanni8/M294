@@ -24,7 +24,8 @@ export class AddUserOrGroupPopupComponent implements OnInit{
   private groups: Array<Group> = [];
   public userGroup: Array<UserGroup> = [];
   public previewUserGroup: Array<UserGroup> = [];
-
+  public loadedUserGroup: UserGroup | null = null;
+  
   constructor(private store: Store){}
 
   public reloadFilter(){
@@ -45,5 +46,9 @@ export class AddUserOrGroupPopupComponent implements OnInit{
   filter(key: string){
     key = key.toLocaleLowerCase();
     this.previewUserGroup = this.userGroup.filter(userGroup => userGroup.name.toLocaleLowerCase().indexOf(key) !== -1);
+  }
+
+  loadGroupOrUser(userGroup: UserGroup){
+    this.loadedUserGroup = userGroup;
   }
 }

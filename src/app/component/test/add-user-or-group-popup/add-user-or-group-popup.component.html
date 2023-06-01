@@ -1,5 +1,5 @@
 <div id="popup-wrapper">
-    <h1>Hello from Popup</h1>
+    <h1>Invite a new User or Group</h1>
     <form>
         <mat-form-field>
             <mat-label>User or Group</mat-label>
@@ -8,7 +8,7 @@
                    matInput
                    [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-                <mat-option  *ngFor="let unknownVar of previewUserGroup" [value]="unknownVar.name">
+                <mat-option  (onSelectionChange)="loadGroupOrUser(unknownVar)" *ngFor="let unknownVar of previewUserGroup" [value]="unknownVar.name">
                     {{unknownVar.name}} ({{unknownVar.type}})
                 </mat-option>
             </mat-autocomplete>
@@ -17,6 +17,6 @@
     </form>
     <div id="popup-action">
         <button mat-stroked-button [mat-dialog-close]="" color="warn">Close</button>
-        <button mat-stroked-button color="primary">Invite</button>
+        <button mat-stroked-button [mat-dialog-close]="loadedUserGroup" [disabled]="!loadedUserGroup" color="primary">Invite</button>
     </div>
 </div>
