@@ -19,4 +19,8 @@ export class TestService{
     return this.http.post<Test>("/api/v1/test", test);
   }
 
+  public removeUserOrGroup(testId: number, userGroupId: number, type: string): Observable<Test>{
+    return this.http.put<Test>(`/api/v1/test/${testId}/uninvite?type=${type}&id=${userGroupId}`,{});
+  }
+
 }

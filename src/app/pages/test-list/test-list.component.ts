@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Test } from 'src/app/model/test/test.model';
 import { AppAuthService } from 'src/app/service/app.auth.service';
-import { fetchAllTestsAdministrator } from 'src/app/stage/test/test.action';
+import { fetchAllTestsAdministrator, removeUserOrGroup } from 'src/app/stage/test/test.action';
 import { selectAllTests } from 'src/app/stage/test/test.selector';
 
 @Component({
@@ -47,5 +47,9 @@ export class TestListComponent implements OnInit{
     this.index = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updatePreviewTests()
+  }
+
+  removeUserOrGroup(id: number, userGroupId: number, type: string){
+    this.store.dispatch(removeUserOrGroup({idType: type, testId: id, userGroupId: userGroupId}));
   }
 }

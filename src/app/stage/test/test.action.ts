@@ -18,4 +18,14 @@ export const saveTest = createAction(
 export const fetchTestSuccess = createAction(
     '[Collecton] loading fetched test',
     props<{ test: Test }>()
-)
+);
+
+export const removeUserOrGroup = createAction(
+    '[API] removing user or Group from test',
+    props<{testId: number, userGroupId: number, idType: string}>()
+);
+
+export const removeUserOrGroupSuccess = createAction(
+    '[Collection] removing user or group from collecton',
+    props<{testId: number, userGroupId: number, idType: string}>()
+) 

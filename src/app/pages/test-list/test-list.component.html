@@ -18,7 +18,7 @@
                 <div class="badge-wrapper">
                     <div class="badge" *ngFor="let user of element.users">
                         <p class="badge-text">{{user.username}}</p>
-                        <mat-icon class="badge-delete">clear</mat-icon>
+                        <mat-icon (click)="removeUserOrGroup(element.id,user.id, 'user')" class="badge-delete">clear</mat-icon>
                     </div>
                 </div>
             </td>
@@ -31,7 +31,7 @@
                 <div class="badge-wrapper">
                     <div class="badge" *ngFor="let group of element.groups">
                         <p class="badge-text">{{group.groupName}}</p>
-                        <mat-icon class="badge-delete">clear</mat-icon>
+                        <mat-icon (click)="removeUserOrGroup(element.id,group.id, 'group')" class="badge-delete">clear</mat-icon>
                     </div>
                 </div>
             </td>
