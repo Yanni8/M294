@@ -17,7 +17,6 @@ const routes: Routes = [
   {path: "test", pathMatch: "full", component: TestListComponent},
   {path: "test/administrator", pathMatch: "full", component: TestListComponent},
   {path: "test/administrator/edit", pathMatch: "full", component: TestEditComponent},
-  {path: "test/administrator/edit/:id", pathMatch: "full", component: TestEditComponent},
 ];
 
 @NgModule({

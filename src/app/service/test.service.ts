@@ -27,4 +27,8 @@ export class TestService{
     return this.http.get<Test>(`/api/v1/test/${id}/administrator`);
   }
 
+  public updateTest(test: Test): Observable<Test>{
+    return this.http.put<Test>(`/api/v1/test/${test.id}`, test);
+  }
+
 }
