@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Test } from "src/app/model/test/test.model";
-import { fetchAllTestsSuccess, fetchTestSuccess, removeUserOrGroupSuccess } from "./test.action";
+import { deleteTestSuccess, fetchAllTestsSuccess, fetchTestSuccess, removeUserOrGroupSuccess } from "./test.action";
 
 const INITIAL_STATE: Array<Test> = [];
 
@@ -26,5 +26,6 @@ export const testReducer = createReducer(
         state[idx] = test;
         
         return state 
-    })
+    }),
+    on(deleteTestSuccess, (state, {id}) => state.filter(test => test.id !== id))
 );

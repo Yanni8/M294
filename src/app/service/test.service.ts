@@ -29,4 +29,8 @@ export class TestService{
     return this.http.put<Test>(`/api/v1/test/${test.id}`, test);
   }
 
+  public deleteTest(id: number): Observable<void>{
+    return this.http.delete<void>(`/api/v1/test/${id}`);
+  }
+
 }

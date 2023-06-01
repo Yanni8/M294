@@ -34,3 +34,13 @@ export const fetchTestById = createAction(
     '[API] fetching test by id',
     props<{id: number}>()
 )
+
+export const deleteTestById = createAction(
+    '[API] deleting Test',
+    props<{id: number}>()
+)
+
+export const deleteTestSuccess = createAction(
+    '[Collection] deleting in collection',
+    props<{id: number}>()
+)
