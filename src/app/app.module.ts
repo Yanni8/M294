@@ -34,7 +34,10 @@ import { groupReducer } from './stage/group/group.reducer';
 import { AddUserPopupComponent } from './component/group/add-user-popup/add-user-popup.component';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { GroupEditComponent } from './pages/group-edit/group-edit.component'; 
+import { GroupEditComponent } from './pages/group-edit/group-edit.component';
+import { TestListComponent } from './pages/test-list/test-list.component'; 
+import { TestEffect } from './stage/test/test.effect';
+import { testReducer } from './stage/test/test.reducer';
 
 export let AppInjector: Injector;
 
@@ -69,6 +72,7 @@ export function storageFactory(): OAuthStorage {
     GroupListComponent,
     AddUserPopupComponent,
     GroupEditComponent,
+    TestListComponent,
   ],
   imports: [
     OAuthModule.forRoot({
@@ -80,8 +84,8 @@ export function storageFactory(): OAuthStorage {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({"users": userReducer, "currentUser" : whoamiReducer, "groups": groupReducer}, {}),
-    EffectsModule.forRoot([UserEffect, GroupEffect]),
+    StoreModule.forRoot({"users": userReducer, "currentUser" : whoamiReducer, "groups": groupReducer, "tests": testReducer}, {}),
+    EffectsModule.forRoot([UserEffect, GroupEffect, TestEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,
     MatIconModule,
