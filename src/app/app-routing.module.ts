@@ -16,7 +16,8 @@ import { UserEditComponent } from './pages/user-edit/user-edit.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 
 const routes: Routes = [
-  {path: "", pathMatch: "full", component: HomeComponent},
+  { path: "", pathMatch: "full", component: HomeComponent },
+  { path: "home", pathMatch: "full", component: HomeComponent },
   { path: "user", pathMatch: "full", component: UserListComponent, canActivate: [AppAuthGuard], data: { roles: [Role.Admin] } },
   { path: "user/edit/:id", pathMatch: "full", component: UserEditComponent, canActivate: [AppAuthGuard], data: { roles: [Role.Admin] } },
   { path: "user/edit", pathMatch: "full", component: UserEditComponent, canActivate: [AppAuthGuard], data: { roles: [Role.Admin] } },
