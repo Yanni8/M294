@@ -51,6 +51,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CallbackComponent } from './pages/callback/callback.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { notificationReducer } from './stage/notification/notification.reducer';
 
 export let AppInjector: Injector;
 
@@ -106,7 +108,7 @@ export function storageFactory(): OAuthStorage {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ "users": userReducer, "currentUser": whoamiReducer, "groups": groupReducer, "tests": testReducer, "solutions": solutuionReducer }, {}),
+    StoreModule.forRoot({ "users": userReducer, "currentUser": whoamiReducer, "groups": groupReducer, "tests": testReducer, "solutions": solutuionReducer, "notifications": notificationReducer }, {}),
     EffectsModule.forRoot([UserEffect, GroupEffect, TestEffect, SolutionEffect]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatButtonModule,
@@ -122,6 +124,7 @@ export function storageFactory(): OAuthStorage {
     MatAutocompleteModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'

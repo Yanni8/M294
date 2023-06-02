@@ -40,7 +40,7 @@ export class GroupEffect {
         ofType(deleteGroup),
         mergeMap(({groupId}) => this.groupService.deleteGroup(groupId).pipe(
             map(() => deleteGroupSuccess({ groupId: groupId })),
-            catchError(() => of(addNotification({ desc: "Someting went wrong removing a group. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "You can only delete Groups that are not assigned to a Test", isError: true })))
         )
         )
     ))

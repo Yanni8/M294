@@ -49,7 +49,7 @@ export class TestEffect {
         ofType(deleteTestById),
         mergeMap(({ id }) => this.testService.deleteTest(id).pipe(
             map(() => deleteTestSuccess({ id: id })),
-            catchError(() => of(addNotification({ desc: "Someting went wrong deleting a Test. Try it later again", isError: true })))
+            catchError(() => of(addNotification({ desc: "You can only delete Tests that nowone has solved yet...", isError: true })))
         )
         )
     ))

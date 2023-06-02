@@ -31,7 +31,7 @@ export class UserEffect {
         ofType(deleteUser),
         mergeMap(({ id }) => this.userService.deleteUser(id).pipe(
             map(() => deleteUserSucess({ id: id })),
-            catchError(() => of(addNotification({ desc: "Something went wrong why trying to delete a User", isError: true })))
+            catchError(() => of(addNotification({ desc: "You can't delete Users that are assigned to a group", isError: true })))
         )
         )
     ))
