@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClientXsrfModule } from "@angular/common/http";
 import { userReducer, whoamiReducer } from './stage/user/user.reducer';
 import { UserEffect } from './stage/user/user.effect';
 import { SidenavComponent } from './component/sidenav/sidenav.component';
@@ -47,10 +47,10 @@ import { AppIsInRolesDirective } from './directives/is-in-roles.dir';
 import { SolutionListComponent } from './pages/solution-list/solution-list.component';
 import { solutuionReducer } from './stage/solution/solution.reducer';
 import { SolutionDetailComponent } from './pages/solution-detail/solution-detail.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CallbackComponent } from './pages/callback/callback.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { HomeComponent } from './pages/home/home.component'; 
+import { HomeComponent } from './pages/home/home.component';
 
 export let AppInjector: Injector;
 
@@ -121,7 +121,11 @@ export function storageFactory(): OAuthStorage {
     MatDialogModule,
     MatAutocompleteModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN'
+    }),
   ],
   providers: [
     {
