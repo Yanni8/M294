@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: "test/solve/:id", pathMatch: "full", component: SolveTestComponent, canActivate: [AppAuthGuard], data: { roles: [Role.User] } },
   { path: "solution", pathMatch: "full", component: SolutionListComponent, canActivate: [AppAuthGuard], data: { roles: [Role.Admin] } },
   { path: "solution/details/:id", pathMatch: "full", component: SolutionDetailComponent, canActivate: [AppAuthGuard], data: { roles: [Role.Admin] } },
-  { path: "callback", pathMatch: "full", component: CallbackComponent, canActivate: [AppAuthGuard], data: { roles: [Role.Admin] } },
+  { path: "callback", pathMatch: "full", component: CallbackComponent },
   { path: '**', pathMatch: "full", component: NotfoundComponent },
 ];
 
