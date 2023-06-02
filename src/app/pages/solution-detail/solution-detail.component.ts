@@ -22,7 +22,7 @@ export class SolutionDetailComponent implements OnInit {
     if (!solutionId) {
       return;
     }
-    this.store.select(selectSolutionById({ id: +solutionId })).subscribe(solution => this.solution = solution || null);
+    this.store.select(selectSolutionById({ id: +solutionId })).subscribe(solution => {this.solution = solution || null ; console.log(solution)});
 
     if (!this.solution) {
       this.store.dispatch(fetchSolutionById({ id: +solutionId }));
