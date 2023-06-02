@@ -1,0 +1,27 @@
+<div id="solution-detail-wrapper">
+    <div *ngIf="solution">
+        <h1>{{solution.templateTest.title}}</h1>
+        <h2>Solved by <strong>{{solution.user.username}}</strong></h2>
+        <div id="answer-wrapper">
+            <div *ngFor="let answer of solution?.answers">
+                <h3>{{answer.question}}</h3>
+                <div *ngFor="let right of answer.right">
+                    <mat-checkbox [checked]="right.correctAnswer" disabled
+                        class="example-margin">{{right.answer}}</mat-checkbox>
+                </div>
+                <div *ngFor="let wrong of answer.wrong">
+                    <mat-checkbox id="wrong-answer" [checked]="!wrong.correctAnswer" disabled class="example-margin">
+                        <div id="wrong-answer-dialog">{{wrong.answer}}</div>
+                    </mat-checkbox>
+                </div>
+                <div id="answer-seperator"></div>
+            </div>
+        </div>
+        <div>
+            <button [routerLink]="['/solution']" mat-stroked-button color="warn">Go Back</button>
+        </div>
+    </div>
+    <div *ngIf="!solution">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>

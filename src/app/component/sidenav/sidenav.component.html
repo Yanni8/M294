@@ -14,6 +14,7 @@
             <app-sidenav-element *appIsInRole="['user']" (changeRef)="drawer.toggle()" title="Perform Test" icon="quiz" [href]="['test']"></app-sidenav-element>
             <app-sidenav-element *appIsInRole="['admin']" (changeRef)="drawer.toggle()" title="Test Overview (Admin)" icon="quiz" [href]="['test', 'administrator']"></app-sidenav-element>
             <app-sidenav-element *appIsInRole="['admin']" (changeRef)="drawer.toggle()" title="Add Test" icon="list_alt_add" [href]="['test', 'administrator', 'edit']"></app-sidenav-element>
+            <app-sidenav-element *appIsInRole="['admin']" (changeRef)="drawer.toggle()" title="Solution Overview" icon="checkmark" [href]="['solution']"></app-sidenav-element>
         </div>
     </mat-drawer>
     <div id="drawer-launcher">

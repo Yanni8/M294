@@ -46,6 +46,8 @@ import { SolutionEffect } from './stage/solution/solution.effect';
 import { AppIsInRolesDirective } from './directives/is-in-roles.dir';
 import { SolutionListComponent } from './pages/solution-list/solution-list.component';
 import { solutuionReducer } from './stage/solution/solution.reducer';
+import { SolutionDetailComponent } from './pages/solution-detail/solution-detail.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 
 export let AppInjector: Injector;
 
@@ -86,6 +88,7 @@ export function storageFactory(): OAuthStorage {
     SolveTestComponent,
     AppIsInRolesDirective,
     SolutionListComponent,
+    SolutionDetailComponent,
   ],
   imports: [
     OAuthModule.forRoot({
@@ -112,6 +115,7 @@ export function storageFactory(): OAuthStorage {
     MatDialogModule,
     MatAutocompleteModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {

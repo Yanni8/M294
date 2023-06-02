@@ -20,4 +20,8 @@ export class SolutionService {
     return this.http.get<Array<CorrectedSolution>>("/api/v1/solution/");
   }
 
+  public getSolutionById(id: number): Observable<CorrectedSolution>{
+    return this.http.get<CorrectedSolution>(`/api/v1/solution/${id}`)
+  }
+
 }
