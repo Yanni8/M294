@@ -40,8 +40,8 @@ export class SolutionListComponent implements OnInit {
   }
 
   generateScore(solution: CorrectedSolution){
-    let right: number = 0, wrong: number = 0;
-    for(let answer of solution.answers){
+    let right = 0, wrong = 0;
+    for(const answer of solution.answers){
       right += answer.right?.length || 0;
       wrong += answer.wrong?.length || 0; 
     }

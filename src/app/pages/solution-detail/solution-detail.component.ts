@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CorrectedSolution } from 'src/app/model/solution/correctedSolution.model';
-import { fetchAllSolutions, fetchSolutionById } from 'src/app/stage/solution/solution.action';
+import { fetchSolutionById } from 'src/app/stage/solution/solution.action';
 import { selectSolutionById } from 'src/app/stage/solution/solution.selector';
 
 @Component({
