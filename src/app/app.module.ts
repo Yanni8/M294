@@ -47,14 +47,15 @@ import { AppIsInRolesDirective } from './directives/is-in-roles.dir';
 import { SolutionListComponent } from './pages/solution-list/solution-list.component';
 import { solutuionReducer } from './stage/solution/solution.reducer';
 import { SolutionDetailComponent } from './pages/solution-detail/solution-detail.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CallbackComponent } from './pages/callback/callback.component'; 
 
 export let AppInjector: Injector;
 
 export const authConfig: AuthConfig = {
   issuer: 'https://sso.bbzbl-it.dev/realms/ILV',
   requireHttps: false,
-  redirectUri: window.location.origin,
+  redirectUri: window.location.origin + "/callback",
   postLogoutRedirectUri: window.location.origin,
   clientId: 'demoapp',
   scope: 'openid profile roles offline_access',
@@ -89,6 +90,7 @@ export function storageFactory(): OAuthStorage {
     AppIsInRolesDirective,
     SolutionListComponent,
     SolutionDetailComponent,
+    CallbackComponent,
   ],
   imports: [
     OAuthModule.forRoot({

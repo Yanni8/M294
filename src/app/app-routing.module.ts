@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CallbackComponent } from './pages/callback/callback.component';
 import { GroupEditComponent } from './pages/group-edit/group-edit.component';
 import { GroupListComponent } from './pages/group-list/group-list.component';
 import { SolutionDetailComponent } from './pages/solution-detail/solution-detail.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: "test/solve/:id", pathMatch: "full", component: SolveTestComponent},
   {path: "solution", pathMatch: "full", component: SolutionListComponent},
   {path: "solution/details/:id", pathMatch: "full", component: SolutionDetailComponent},
-
+  {path: "callback", pathMatch: "full", component: CallbackComponent},
 ];
 
 @NgModule({
