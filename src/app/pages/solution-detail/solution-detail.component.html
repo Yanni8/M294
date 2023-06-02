@@ -6,8 +6,9 @@
             <div *ngFor="let answer of solution?.answers">
                 <h3>{{answer.question}}</h3>
                 <div *ngFor="let right of answer.right">
-                    <mat-checkbox [checked]="right.correctAnswer" disabled
-                        class="example-margin">{{right.answer}}</mat-checkbox>
+                    <mat-checkbox id="right-answer" [checked]="right.correctAnswer" disabled class="example-margin">
+                        <div id="right-answer-dialog">{{right.answer}}</div>
+                    </mat-checkbox>
                 </div>
                 <div *ngFor="let wrong of answer.wrong">
                     <mat-checkbox id="wrong-answer" [checked]="!wrong.correctAnswer" disabled class="example-margin">

@@ -1,3 +1,4 @@
-<div>
-    <h1>Welcome</h1>
+<div id="home-wrapper">
+    <h1 *ngIf="user">Welcome Back <strong>{{user.username}}</strong></h1>
+    <h2 *ngIf="!isLogedIn">You need to log into this Application to use it...</h2>
 </div>

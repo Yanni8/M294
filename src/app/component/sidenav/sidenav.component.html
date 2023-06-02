@@ -1,5 +1,5 @@
-<div>
-    <mat-drawer [opened]="false" mode="side" #drawer id="sidenav-wrapper">
+<div *ngIf="isLogedIn">
+    <mat-drawer [opened]="isHome()" mode="side" #drawer id="sidenav-wrapper">
         <div id="sidenav-header">
             <h1 id="sidenav-title">Navigator</h1>
             <button (click)="drawer.toggle()" id="sidenav-minimizer" mat-icon-button color="secondary">
