@@ -6,7 +6,7 @@ jobs:
   build-and-deploy:
     name: "Build Docker Image and deploy to Registry"
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/deployment'
     steps:
     - uses: actions/checkout@v2
     - name: Set up QEMU

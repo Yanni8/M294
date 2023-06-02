@@ -48,7 +48,8 @@ import { SolutionListComponent } from './pages/solution-list/solution-list.compo
 import { solutuionReducer } from './stage/solution/solution.reducer';
 import { SolutionDetailComponent } from './pages/solution-detail/solution-detail.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { CallbackComponent } from './pages/callback/callback.component'; 
+import { CallbackComponent } from './pages/callback/callback.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component'; 
 
 export let AppInjector: Injector;
 
@@ -91,6 +92,7 @@ export function storageFactory(): OAuthStorage {
     SolutionListComponent,
     SolutionDetailComponent,
     CallbackComponent,
+    NotfoundComponent,
   ],
   imports: [
     OAuthModule.forRoot({

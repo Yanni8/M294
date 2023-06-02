@@ -21,11 +21,11 @@ export class AppAuthGuard {
     if (this.oauthService.hasValidAccessToken()) {
       const hasRoles = this.checkRoles(route);
       if (!hasRoles) {
-        return this.router.parseUrl('/noaccess');
+        return this.router.parseUrl('/notfound');
       }
       return hasRoles;
     }
-    return this.router.parseUrl('/noaccess');
+    return this.router.parseUrl('/notfound');
   }
 
   checkRoles (route: ActivatedRouteSnapshot) : boolean {
